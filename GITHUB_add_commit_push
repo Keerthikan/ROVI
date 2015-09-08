@@ -3,7 +3,6 @@ Jeg ved ikke lige hvordan du interagere med github, men hvis du bruger terminale
 Så f.eks. en fil 
 
 git status (fortæller om der er foretaget nogen form for ændringer)
-git add #### (adder en specifik fil)
-git add * (tilføjer alle ændringer)
+git add * (tilføjer alle ændringer) -  hvis det er nødvendigt
 git commit -m "Some message"
 git push -u origin master 

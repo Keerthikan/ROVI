@@ -1,7 +1,0 @@
-Jeg ved ikke lige hvordan du interagere med github, men hvis du bruger terminalen som jeg gør lige nu for at kunne pushe (add), commit, push. 
-
-Så f.eks. en fil 
-
-git add #####(filen)
-git commit -m "Some message"
-git push -u origin master 
