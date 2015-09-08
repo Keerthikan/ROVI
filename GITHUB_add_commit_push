@@ -4,5 +4,6 @@ Så f.eks. en fil
 
 git status (fortæller om der er foretaget nogen form for ændringer)
 git add * (tilføjer alle ændringer) -  hvis det er nødvendigt
+---- Prøv at leg med det lidt selv hvis det er ---  HAr lige selv bøvlet med 2x samme fil. :(
 git commit -m "Some message"
 git push -u origin master 
