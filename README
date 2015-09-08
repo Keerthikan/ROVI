@@ -1,8 +1,9 @@
 ROVI  - Robotics + Vision Git repo. 
 
-Jeg har samlet lektioner i seperate mappe.
-Compiler: cmake. 
+Jeg har får hver lektion lavet en mappe som indeholder de ting
+som jeg har arbejdet med.
 
+Compiler: cmake. 
 
 Lektion01: Robwork up, mangler configurationer som angiver hvordan den kan gribe den 
 Lektion02: Vision, openCV - BlackBox cover that thing.  
