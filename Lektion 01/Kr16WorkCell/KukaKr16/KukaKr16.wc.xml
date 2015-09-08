@@ -18,8 +18,8 @@
   <RPY> 0 90 0 </RPY> <Pos> -0.158 0 0</Pos></Joint>
 
  <PosLimit refjoint="Joint1" min="-185" max="185" />
- <PosLimit refjoint="Joint2" min="-155" max="35" />
- <PosLimit refjoint="Joint3" min="-130" max="154" />
+ <PosLimit refjoint="Joint2" min="-155" max="150" />
+ <PosLimit refjoint="Joint3" min="-150" max="154" />
  <PosLimit refjoint="Joint4" min="-350" max="350" />
  <PosLimit refjoint="Joint5" min="-130" max="130" />
  <PosLimit refjoint="Joint6" min="-350" max="350" />
