@@ -1,0 +1,1 @@
+/home/student/ROVI/Lektion 02/ROVI01/build/CMakeFiles/ROVI01.dir
