@@ -4,7 +4,19 @@
   <RPY> 0 0 0 </RPY> <Pos> 0 0 0 </Pos>
  </Joint>
  <Joint name="Joint1" type="Revolute">
-  <RPY> 0 0 0 </RPY> <Pos> 0 0 0.089 </Pos>
+  <RPY> 0 90 0 </RPY> <Pos> 0 0 0.089 </Pos>
+ </Joint>
+<Joint name="Joint2" type="Revolute">
+  <RPY> 0 0 0 </RPY> <Pos> -0.42 0 0.07 </Pos>
+ </Joint>
+<Joint name="Joint3" type="Revolute">
+  <RPY> 0 0 0 </RPY> <Pos> -0.4 0 -0.01 </Pos>
+ </Joint>
+<Joint name="Joint4" type="Revolute">
+  <RPY> 0 90 0 </RPY> <Pos> -0.04 0 0.05 </Pos>
+ </Joint>
+<Joint name="Joint5" type="Revolute">
+  <RPY> 0 -90 0 </RPY> <Pos> -0.05 0 -0.04 </Pos>
  </Joint>
  <!-- PUT OUR JOINTS HERE ONE AT THE TIME -->
 
@@ -42,15 +54,30 @@
   <Polytope file="Geometry/joint0" />
  </Drawable>
  <Drawable name="Joint1Geo" refframe="Joint1">
-  <RPY> 90 90 0 </RPY> <Pos> 0 0 0 </Pos>
+  <RPY> 0 0 90 </RPY> <Pos> 0.0888 0 0 </Pos>
   <Polytope file="Geometry/joint1" />
  </Drawable>
-
+ <Drawable name="Joint2Geo" refframe="Joint2">
+  <RPY> 0 0 90 </RPY> <Pos> 0.51 0 -0.07 </Pos>
+  <Polytope file="Geometry/joint2" />
+ </Drawable>
+<Drawable name="Joint3Geo" refframe="Joint3">
+  <RPY> 0 0 90 </RPY> <Pos> 0.91 0 -0.06 </Pos>
+  <Polytope file="Geometry/joint3" />
+ </Drawable>
+<Drawable name="Joint4Geo" refframe="Joint4">
+  <RPY> 0 270 90 </RPY> <Pos> 0.11 0 0.95 </Pos>
+  <Polytope file="Geometry/joint4" />
+ </Drawable>
+<Drawable name="Joint5Geo" refframe="Joint5">
+  <RPY> 0 0 90 </RPY> <Pos> 0.990 0 -0.16 </Pos>
+  <Polytope file="Geometry/joint5" />
+ </Drawable>
  <!-- PUT OUR DRAWABLE HERE ONE AT THE TIME -->
 
  <CollisionSetup file="CollisionSetup.prox.xml" />
 
  <!-- The home position must have the same length as joints you have inserted -->
- <Q name="Home">0 0</Q>
+ <Q name="Home">0 0 0 0 0 0</Q>
 
 </SerialDevice>
