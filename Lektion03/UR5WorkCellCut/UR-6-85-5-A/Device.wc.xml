@@ -1,0 +1,50 @@
+<SerialDevice name="UR-6-85-5-A">
+ <Frame name="Base" />
+ <Joint name="Joint0" type="Revolute">
+  <RPY> 0 0 0 </RPY> <Pos> 0 0 0 </Pos>
+ </Joint>
+
+ <!-- PUT OUR JOINTS HERE ONE AT THE TIME -->
+
+ <PosLimit refjoint="Joint0" min="-180" max="180" />
+ <PosLimit refjoint="Joint1" min="-270" max="90" />
+ <PosLimit refjoint="Joint2" min="-180" max="180" />
+ <PosLimit refjoint="Joint3" min="-270" max="90" /> 
+ <PosLimit refjoint="Joint4" min="-180" max="180" />
+ <PosLimit refjoint="Joint5" min="-180" max="180" />
+
+ <VelLimit refjoint="Joint0" max="60" />
+ <VelLimit refjoint="Joint1" max="60" />
+ <VelLimit refjoint="Joint2" max="60" />
+ <VelLimit refjoint="Joint3" max="60" /> 
+ <VelLimit refjoint="Joint4" max="60" />
+ <VelLimit refjoint="Joint5" max="60" />
+
+ <AccLimit refjoint="Joint0" max="120" />
+ <AccLimit refjoint="Joint1" max="120" />
+ <AccLimit refjoint="Joint2" max="120" />
+ <AccLimit refjoint="Joint3" max="120" /> 
+ <AccLimit refjoint="Joint4" max="120" />
+ <AccLimit refjoint="Joint5" max="120" />
+
+ <Drawable name="flangeGeo" refframe="Base">
+  <RPY> 0 90 0 </RPY> <Pos> 0 0 0 </Pos>
+  <Polytope file="Geometry/robotFlange" />
+ </Drawable>
+ <Drawable name="flangeGeo" refframe="Base">
+  <RPY> 0 90 0 </RPY> <Pos> 0 0 0 </Pos>
+  <Polytope file="Geometry/base" />
+ </Drawable>
+ <Drawable name="Joint0Geo" refframe="Joint0">
+  <RPY> 270 90 0 </RPY> <Pos> 0 0 0 </Pos>
+  <Polytope file="Geometry/joint0" />
+ </Drawable>
+
+ <!-- PUT OUR DRAWABLE HERE ONE AT THE TIME -->
+
+ <CollisionSetup file="CollisionSetup.prox.xml" />
+
+ <!-- The home position must have the same length as joints you have inserted -->
+ <Q name="Home">0</Q>
+
+</SerialDevice>
