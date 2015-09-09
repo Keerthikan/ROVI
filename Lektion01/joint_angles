@@ -1,0 +1,45 @@
+Lige på: 
+1.713
+-1.395
+2.415
+-2.975
+1.027
+-1.658
+
+Yderst højre
+1.420
+-0.928
+1.634
+1.123
+2.027
+5.469
+
+Yderst venstre
+1.878
+-0.863
+1.519
+5.305
+2.198
+3.996
+
+Øverst
+1.663
+-1.441
+1.655
+3.168
+-1.326
+3.228
+
+--------------------------------------
+
+How to find the right positions
+
+Jog - KukaKr16
+
+InvKin
+TCP Frame: 	PG70.TCP
+Ref. Frame: 	Bottle
+
+Set each parameter [x,y,z,R,P,Y] to zero
+
+
