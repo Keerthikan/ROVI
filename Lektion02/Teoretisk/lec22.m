@@ -40,9 +40,18 @@ R = Rba*Rcb
 
 %% Exercise 3.2
 clear;clc;
+syms a_z
+syms b_z
 
+Rab = [cos(a_z) -sin(a_z) 0; sin(a_z) cos(a_z) 0; 0 0 1]
+Rbc = [cos(b_z) -sin(b_z) 0; sin(b_z) cos(b_z) 0; 0 0 1]
+Rac = Rab*Rbc
+%Trig idendity sin(a(+/-)b) = sin(a)cos(b) (+/-) cos(a)sin(b)
+%Trig idendity cos(a(+/-)b) = cos(a)cos(b) (-/+) sin(a)sin(b)
 
-
+simplify(Rac) 
+%Proofs that the multiplying rotationmatrix makes it possisble to rotate
+%from one frame to another. 
 %% Exercise 3.3
 clear;clc;
 
