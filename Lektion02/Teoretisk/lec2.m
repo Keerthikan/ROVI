@@ -116,30 +116,20 @@ Rba = [ dot(xA,xB),dot(xA,yB),dot(xA,zB);
 %           |  0  0  0  |   1    |
 %           |           |        |
 
-Tba = [ Rba,oB'-oA';
+P = oB' - oA';
+Tba = [1 0 0  P(1) ; 0 1 0 P(2) ; 0 0 1 P(3); 0 0 0 1]
+D = oA' - oB';
+Tab = [1 0 0  D(1) ; 0 1 0 D(2) ; 0 0 1 D(3); 0 0 0 1]
+inv(Tab) == Tba
+
+% ii    
+Rcb =  eye(3);
+     
+Tcb = [ Rcb,oC'-oB';
         0,0,0,1]
 
-
-% Inverse
-
-%           |           |             |
-%           |   Rba'    |  -Rba'*oB   |
-%   Tba =   |-------------------------|
-%           |  0  0  0  |      1      |
-%           |           |             |
-
-%Tab = [ Rba',-Rba'*oB';
-%        0,0,0,1]
-% ii    
-% %Rcb = [ dot(xB,xC),dot(xB,yC),dot(xB,zC);
-%         dot(yB,xC),dot(yB,yC),dot(yB,zC);
-%         dot(zB,xC),dot(zB,yC),dot(zB,zC)];
-%     
-%Tcb = [ Rcb,oC';
-%        0,0,0,1]
-
 % iii
-%Tca = Tba*Tcb
+Tca = Tba*Tcb
 
 
 
