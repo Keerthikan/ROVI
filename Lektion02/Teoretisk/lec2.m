@@ -116,9 +116,10 @@ Rba = [ dot(xA,xB),dot(xA,yB),dot(xA,zB);
 %           |  0  0  0  |   1    |
 %           |           |        |
 
-Tba = [ Rba,oA';
+Tba = [ Rba,oB'-oA';
         0,0,0,1]
-    
+
+
 % Inverse
 
 %           |           |             |
@@ -127,18 +128,18 @@ Tba = [ Rba,oA';
 %           |  0  0  0  |      1      |
 %           |           |             |
 
-Tab = [ Rba',-Rba'*oB';
-        0,0,0,1]
+%Tab = [ Rba',-Rba'*oB';
+%        0,0,0,1]
 % ii    
-Rcb = [ dot(xB,xC),dot(xB,yC),dot(xB,zC);
-        dot(yB,xC),dot(yB,yC),dot(yB,zC);
-        dot(zB,xC),dot(zB,yC),dot(zB,zC)];
-    
-Tcb = [ Rcb,oC';
-        0,0,0,1]
+% %Rcb = [ dot(xB,xC),dot(xB,yC),dot(xB,zC);
+%         dot(yB,xC),dot(yB,yC),dot(yB,zC);
+%         dot(zB,xC),dot(zB,yC),dot(zB,zC)];
+%     
+%Tcb = [ Rcb,oC';
+%        0,0,0,1]
 
 % iii
-Tca = Tba*Tcb
+%Tca = Tba*Tcb
 
 
 
