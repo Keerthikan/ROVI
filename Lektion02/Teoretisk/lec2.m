@@ -15,27 +15,6 @@ Rba = [dot(xA,xB),dot(xA,yB),dot(xA,zB);
 
 %% Exercise 3.2
 clear;clc;
-
-syms xA yA zA;
-syms xB yB zB;
-syms xC yC zC;
-
-Rba = [ xA*xB,xA*yB,xA*zB;
-        yA*xB,yA*yB,yA*zB;
-        zA*xB,zA*yB,zA*zB]
-
-Rcb = [ xB*xC,xB*yC,xB*zC;
-        yB*xC,yB*yC,yB*zC;
-        zB*xC,zB*yC,zB*zC]
-
-Rca = [ xA*xC,xA*yC,xA*zC;
-        yA*xC,yA*yC,yA*zC;
-        zA*xC,zA*yC,zA*zC]
-
-R = Rba*Rcb
-
-%% Exercise 3.2
-clear;clc;
 syms a_z
 syms b_z
 
@@ -116,9 +95,9 @@ Rba = [ dot(xA,xB),dot(xA,yB),dot(xA,zB);
 %           |  0  0  0  |   1    |
 %           |           |        |
 
-P = oB' - oA';
+P = oB' - oA'
 Tba = [1 0 0  P(1) ; 0 1 0 P(2) ; 0 0 1 P(3); 0 0 0 1]
-D = oA' - oB';
+D = oA' - oB'
 Tab = [1 0 0  D(1) ; 0 1 0 D(2) ; 0 0 1 D(3); 0 0 0 1]
 inv(Tab) == Tba
 
