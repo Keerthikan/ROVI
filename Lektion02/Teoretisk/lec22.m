@@ -73,29 +73,63 @@ Rrpy =[cos(z) -sin(z) 0; sin(z) cos(z) 0; 0 0 1]* [cos(y) 0 sin(y); 0 1 0; -sin(
 %We know angle y, we need to find angle x and z which can be found using
 %the trig ident stated above with atan2(Rrpy_32,Rrpy_33).
 atan2(Rrpy(3,2),Rrpy(3,3))
-
+% den er i hånden
 cos(y)
 %% Exercise 3.5
 clear; clc;
-xA = [1,0,0]
-yA = [0, sqrt(3)/3, (1/2)]
-zA = [0, -1/2 , sqrt(3)/2]
+%% Exercise 3.5
+clear; clc;
 
-oA = [2,1,0]
+xA = [1,0,0];
+yA = [0,0.866,0.5];
+zA = [0,-0.5,0.866];
 
-xB = [0, sqrt(3)/3, (-1/2)]
-yB = [0, -1/2 , (sqrt(3)/2)]
-zB = [-1,0,0]
+xB = [0,0.866,-0.5];
+yB = [0,-0.5,-0.866];
+zB = [-1,0,0];
 
-oB = [4,4,1]
+xC = [0,1,0];
+yC = [0,0,1];
+zC = [1,0,0];
 
-
-Rab = [ dot(xA,xB),dot(xA,yB),dot(xA,zB);
+oA = [2,1,0];
+oB = [4,4,1];
+oC = [5,0,0];
+ 
+% i 
+Rba = [ dot(xA,xB),dot(xA,yB),dot(xA,zB);
         dot(yA,xB),dot(yA,yB),dot(yA,zB);
         dot(zA,xB),dot(zA,yB),dot(zA,zB)]
 
+%           |           |        |
+%           |   Rba     |   oB   |
+%   Tba =   |--------------------|
+%           |  0  0  0  |   1    |
+%           |           |        |
 
+Tba = [ Rba,oB'-oA';
+        0,0,0,1]
+inTba
+% Inverse
 
+%           |           |             |
+%           |   Rba'    |  -Rba'*oB   |-
+%   Tba =   |-------------------------|
+%           |  0  0  0  |      1      |
+%           |           |             |
+
+Tab = [ Rba',-Rba'*oB'-oA';
+        0,0,0,1]
+% ii    
+% %Rcb = [ dot(xB,xC),dot(xB,yC),dot(xB,zC);
+%         dot(yB,xC),dot(yB,yC),dot(yB,zC);
+%         dot(zB,xC),dot(zB,yC),dot(zB,zC)];
+%     
+%Tcb = [ Rcb,oC';
+%        0,0,0,1]
+
+% iii
+%Tca = Tba*Tcb
 
 
 

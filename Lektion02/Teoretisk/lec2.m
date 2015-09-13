@@ -84,7 +84,7 @@ Dt = det(Rba)
 clear; clc;
 
 
-phi_y = -(pi/2);
+%in hand.
 
 %% Exercise 3.5
 clear; clc;
