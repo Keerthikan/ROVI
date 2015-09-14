@@ -1,1 +1,0 @@
-/home/student/ROVI/Lektion 01/HelloWorldRobWork/src/CMakeFiles/HelloWorldRobWork.dir
