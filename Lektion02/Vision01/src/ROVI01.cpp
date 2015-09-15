@@ -70,7 +70,15 @@ int main() {
     imshow("test", img_object);
     waitKey(0);
 
+    // Draw lines   - example4
 
+    Mat image4 = image.clone();
+    for(int x=350 ; x<=440 ; x++){
+        line( image4, Point(x, 100), Point(x,220), Scalar(0,0,0), 1, 8 );
+    }
+
+    imshow("windowname",image4);
+    waitKey(0);
 
 	return 0;
 }
