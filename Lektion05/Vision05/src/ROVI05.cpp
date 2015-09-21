@@ -173,6 +173,7 @@ int main() {
     waitKey(0);
     //Example 3b - Linear filtering using own method
     Mat image5 = image.clone();
+    //Copy from the solution -  Ain't body got time for that!
     
 
     return 0;
