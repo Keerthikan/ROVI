@@ -1,0 +1,26 @@
+4.12
+Q: Consider a checkerboard image in which each square is 1x1mm. 
+Assuming that the image extends infinitely in both coordinate directions,
+what is the minimum sampling rate (in samples/mm) required to avoid aliasing?
+
+A:
+Nyquist siger at vi skal sample med en frekvens som er 2 gange højere end den maksimale frekvens, for at undgå at den aliaser med højeste frekvenser(første som vil blive ramt). I dette tilfælde med et checker board sampler vi 1/2 x 1/2 mm da den mindste square er 1 mm, og derfor opfylder vi Nyquist.
+ 
+http://microscopy.berkeley.edu/courses/dib/sections/02Images/sampling.html
+
+
+Q: Why does the original quetioon state “Assuming that the image extends infinitely in both coordinate directions”?
+
+A: 
+Det er fordi at ifølge fourier er en 2d funktion kun band limited hvis den går mod uendelig i begge retninger af koordinat systemet.  
+
+
+---- Kommer noget uddybbende ----
+4.13
+Q: We know that shrinking an image can cause aliasing. Is that also true for zooming (zooming out)? Explain?
+
+A: 
+It would. 
+Zooming in => downsample removes data from the original image. 
+Zooming out => interpolating. Man skal bruge flere pixels og derfor interpolere man de ekstra pixels imellem.  De sample pixels bliver spredt på en større flade, og imellem pixelsene bliver de interpoleret. 
+Interpolation er ikke altid perfekt. derfor ved meget stor zoom out, mister man meget information=> alliasing. 
