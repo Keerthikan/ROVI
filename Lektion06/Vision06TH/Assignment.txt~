@@ -24,3 +24,7 @@ It would.
 Zooming in => downsample removes data from the original image. 
 Zooming out => interpolating. Man skal bruge flere pixels og derfor interpolere man de ekstra pixels imellem.  De sample pixels bliver spredt på en større flade, og imellem pixelsene bliver de interpoleret. 
 Interpolation er ikke altid perfekt. derfor ved meget stor zoom out, mister man meget information=> alliasing. 
+
+---
+4.22
+Q: The two Fourier spectra shown are of the same image. The spectrum on the le3 corresponds to the original image, and the spectrum on the right was obtained a3er the image was padded with zeros. Explain the significant increase in signal strength along the ver?cal and horizontal axes of the spectrum shown on the right.

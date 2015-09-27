@@ -27,4 +27,16 @@ Interpolation er ikke altid perfekt. derfor ved meget stor zoom out, mister man 
 
 ---
 4.22
-Q: The two Fourier spectra shown are of the same image. The spectrum on the le3 corresponds to the original image, and the spectrum on the right was obtained a3er the image was padded with zeros. Explain the significant increase in signal strength along the ver?cal and horizontal axes of the spectrum shown on the right.
+Q: The two Fourier spectra shown are of the same image. The spectrum on the left corresponds to the original image, and the spectrum on the right was obtained afer the image was padded with zeros. Explain the significant increase in signal strength along the vertical and horizontal axes of the spectrum shown on the right.
+
+A: 
+Zero padding for at kunne få samples der er 2^x som gør fft meget hurtigere. 
+Zero padding tilføjere ikke mere information, gør at man får flere sample, hvilket gør at ens signal spectre bliver mere presset sammen, og derved bliver visuelt lettere at aflæse. informationerne imellem bliver interpoleret. 
+
+---
+4.34
+Q: What is the source of the nearly periodic points in the horizontal axis of Fig. 4.41(b)? 
+
+A: 
+Tager den i timen.. I am too tired for this shit.. 
+
