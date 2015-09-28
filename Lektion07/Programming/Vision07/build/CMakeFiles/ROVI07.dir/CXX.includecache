@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/student/ROVI/Lektion07/Programming/Vision07/src/ROVI07.cpp
+iostream
+-
+opencv2/core/core.hpp
+-
+opencv2/highgui/highgui.hpp
+-
+opencv2/imgproc/imgproc.hpp
+/home/student/ROVI/Lektion07/Programming/Vision07/src/opencv2/imgproc/imgproc.hpp
+opencv2/features2d/features2d.hpp
+/home/student/ROVI/Lektion07/Programming/Vision07/src/opencv2/features2d/features2d.hpp
+opencv2/calib3d/calib3d.hpp
+/home/student/ROVI/Lektion07/Programming/Vision07/src/opencv2/calib3d/calib3d.hpp
+math.h
+-
+opencv2/nonfree/nonfree.hpp
+/home/student/ROVI/Lektion07/Programming/Vision07/src/opencv2/nonfree/nonfree.hpp
+

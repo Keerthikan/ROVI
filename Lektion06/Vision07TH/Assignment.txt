@@ -1,0 +1,46 @@
+4.12
+Q: Consider a checkerboard image in which each square is 1x1mm. 
+Assuming that the image extends infinitely in both coordinate directions,
+what is the minimum sampling rate (in samples/mm) required to avoid aliasing?
+
+A*:
+En wavelenght er sort+hvid => derfor 2mm => sample nyquist = 1mm
+http://microscopy.berkeley.edu/courses/dib/sections/02Images/sampling.html
+
+
+Q: Why does the original quetioon state “Assuming that the image extends infinitely in both coordinate directions”?
+
+A: 
+Det er fordi at ifølge fourier er en 2d funktion kun band limited hvis den går mod uendelig i begge retninger af koordinat systemet.  
+
+
+---- Kommer noget uddybbende ----
+4.13
+Q: We know that shrinking an image can cause aliasing. Is that also true for zooming (zooming out)? Explain?
+
+A*: 
+Zooming in => downsample removes data from the original image. 
+Zooming out => interpolating. Man skal bruge flere pixels og derfor interpolere man de ekstra pixels imellem.  
+
+---
+4.22
+Q: The two Fourier spectra shown are of the same image. The spectrum on the left corresponds to the original image, and the spectrum on the right was obtained afer the image was padded with zeros. Explain the significant increase in signal strength along the vertical and horizontal axes of the spectrum shown on the right.
+
+A: 
+Zero padding for at kunne få samples der er 2^x som gør fft meget hurtigere. 
+Zero padding tilføjere ikke mere information, gør at man får flere sample, hvilket gør at ens signal spectre bliver mere presset sammen, og derved bliver visuelt lettere at aflæse. informationerne imellem bliver interpoleret. 
+
+Mere zero padding gør den vinkelrette linje med wavefronten mere tydelig. 
+
+---
+4.34
+Q: What is the source of the nearly periodic points in the horizontal axis of Fig. 4.41(b)? 
+
+A: 
+---
+*  Which points on the FFT of on image have the same wavelength? 
+   Symmetrical point?
+•  What points have the same phase?
+•  What points have the same orienta?on?
+•  What points have the same magnitude?
+
