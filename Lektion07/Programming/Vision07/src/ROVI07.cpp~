@@ -52,10 +52,11 @@ int main()
    cv::Mat_<cv::Vec2f> img_dft;
    merge(imgs,2,img_dft);
    dft(img_dft, img_dft);  
-   split(img_dft,imgs);	
-   cv::Mat_<float> magnitude, phase;
-   cartToPolar(imgs[0],imgs[1],magnitude,phase);
-   dftshift(magnitude);
+    imshow("sdasd",img_dft);   
+   //split(img_dft,imgs);	
+   //cv::Mat_<float> magnitude, phase;
+   //cartToPolar(imgs[0],imgs[1],magnitude,phase);
+   //dftshift(magnitude);
    //log(magnitude,magnitude);
    //normalize(magnitude,magnitude,0,1,CV_MINMAX);
    //imshow("magnitude",magnitude);
