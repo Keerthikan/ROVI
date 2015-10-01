@@ -2,7 +2,7 @@
 #include <math.h>       /* sin & cos*/
 #include <vector>
 
-double ** rotation(double x,double y,double z)
+double ** rotation(double z,double y,double x)
 {
     double** euler = 0;
     euler = new double*[3];
@@ -27,11 +27,50 @@ double ** rotation(double x,double y,double z)
     return euler;
 }
 
+void conv_rotation2rpy(double R[3][3]){
+    double pitch = 0, roll = 0, yaw = 0;
+    if(R[2][0]==1){
+        pitch = asin(-R[2][0]);
+        yaw = atan2(R[0][1],R[0][2]);
+        roll = atan2(R[1][1],R[1][2]);
+
+        std::cout << roll << " " << pitch << " " << yaw << std::endl;
+        std::cout << std::endl;
+
+        double ** tmp = rotation(roll,pitch,yaw);
+
+
+        for(int i = 0 ; i < 3 ;  i++){
+            for(int j = 0 ; j < 3 ; j++){
+                std::cout << tmp[i][j] << "  ";
+            }
+            std::cout << std::endl;
+        }
+    }else if(R[2][0] > 1){
+        std::cout << "This value is out of bounce, baby!  " << R[2][0] << std::endl;
+        return;
+    }else{
+        pitch = asin(-R[2][0]);
+        yaw = atan2(R[2][1],R[2][2]);
+        roll = atan2(R[1][0],R[0][0]);
+
+        std::cout << roll << " " << pitch << " " << yaw << std::endl;
+        std::cout << std::endl;
+
+        double ** tmp = rotation(roll,pitch,yaw);
+
+
+        for(int i = 0 ; i < 3 ;  i++){
+            for(int j = 0 ; j < 3 ; j++){
+                std::cout << tmp[i][j] << "  ";
+            }
+            std::cout << std::endl;
+        }
+    }
+}
 
 int main()
 {
-    std::cout << "Hello Kiddi !\n\n";
-
     double pi = 3.14;
 
     double **tmp = rotation(pi,pi,pi);
@@ -42,6 +81,29 @@ int main()
         }
         std::cout << std::endl;
     }
+
+    std::cout << "Tes" << std::endl;
+    std::cout << std::endl;
+
+    double test[3][3];
+
+    for(int i = 0 ; i < 3 ; i++){
+        for(int j = 0 ; j < 3 ; j++){
+            test[i][j] = 0.5;
+        }
+    }
+
+    conv_rotation2rpy(test);
+
+    std::cout << std::endl;
+
+    for(int i = 0 ; i < 3 ; i++){
+        for(int j = 0 ; j < 3 ; j++){
+            test[i][j] = 1;
+        }
+    }
+
+    conv_rotation2rpy(test);
 
     return 0;
 }
