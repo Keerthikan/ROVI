@@ -1,6 +1,8 @@
 #include <iostream>
 #include <math.h>       /* sin & cos*/
 #include <vector>
+#include <ctime>
+#include <cstdlib>
 
 using namespace std; // Sorry Jes.. I had to..
 
@@ -29,19 +31,21 @@ double ** rotation(double z,double y,double x)
     return euler;
 }
 
-void conv_rotation2rpy(double R[3][3]){
+void rotation2rpy(double R[3][3]){
     double pitch = 0, roll = 0, yaw = 0;
     if(R[2][0]==1){
         cout << "R[2][0]: " << R[2][0] << " Special sequence!!" << endl;
-        pitch = asin(-R[2][0]);
-        yaw = atan2(R[0][1],R[0][2]) + roll;
-        roll = atan2(R[1][1],R[1][2]) + yaw;
 
-        std::cout << roll << " " << pitch << " " << yaw << std::endl;
-        std::cout << std::endl;
+        yaw = acos(R[0][0]);
+        roll = acos(R[2][2]);
 
-        double ** tmp = rotation(roll,pitch,yaw);
+        std::cout << yaw << "   " << roll << std::endl;
 
+        double tmp[3][3] = {0};
+
+        tmp[0][0] = cos(roll);
+        tmp[1][1] = cos(roll)*cos(yaw);
+        tmp[2][2] = cos(yaw);
 
         for(int i = 0 ; i < 3 ;  i++){
             for(int j = 0 ; j < 3 ; j++){
@@ -79,14 +83,27 @@ int main()
     double test[3][3];
     std::cout << std::endl;
 
+    float random_number = 0;
+
     for(int i = 0 ; i < 3 ; i++){
         for(int j = 0 ; j < 3 ; j++){
-            test[i][j] = -1;
+            srand((unsigned)time(0));
+            random_number = rand()%10000+1;
+
+            for(int l = 0 ; l < 1000000000/2 ; l++ ){
+
+            }
+
+            test[i][j] = random_number/10000;
+            cout << random_number << "  ";
         }
     }
+    std::cout << std::endl;
 
-    conv_rotation2rpy(test);
+    //test[2][0] = 1;
+
+    rotation2rpy(test);
+
 
     return 0;
 }
-
