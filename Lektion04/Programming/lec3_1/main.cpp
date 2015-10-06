@@ -31,6 +31,47 @@ double ** rotation(double z,double y,double x)
     return euler;
 }
 
+double ** rotationT(double q[3])
+{
+    double** euler = 0;
+    euler = new double*[4];
+
+    for (int i = 0; i < 3; ++i)
+    {
+        euler[i] = new double[4];
+    }
+
+    euler[0][0] = cos(q[1])*cos(q[1]);
+    euler[0][1] = sin(q[0])*sin(q[2])*cos(q[2])-cos(q[0])*sin(q[2]);
+    euler[0][2] = cos(q[0])*sin(q[1])*cos(q[2])-sin(q[0])*sin(q[2]);
+
+    euler[1][0] = cos(q[1])*sin(q[2]);
+    euler[1][1] = sin(q[0])*sin(q[1])*sin(q[2])+cos(q[0])*cos(q[2]);
+    euler[1][2] = cos(q[0])*sin(q[1])*sin(q[2])-sin(q[0])*cos(q[2]);
+
+    euler[2][0] = -sin(q[1]);
+    euler[2][1] = sin(q[0])*cos(q[1]);
+    euler[2][2] = cos(q[0])*cos(q[1]);
+
+    euler[3][0] = 0;
+    euler[3][1] = 0;
+    euler[3][2] = 0;
+    euler[3][3] = 1;
+
+    euler[3][0] = 0;
+    euler[3][0] = 0;
+    euler[3][0] = 0;
+
+    for(int j = 0 ; j<4 ; j++ ){
+        for(int k = 0 ; k<4 ; k++ ){
+            cout << euler[j][k] << "\t";
+        }
+        cout << endl;
+    }
+
+    return euler;
+}
+
 void rotation2rpy(double R[3][3]){
     double pitch = 0, roll = 0, yaw = 0;
     if(R[2][0]==1){
@@ -79,7 +120,7 @@ void rotation2rpy(double R[3][3]){
 int main()
 {
     double pi = 3.14;
-
+/*
     double test[3][3];
     std::cout << std::endl;
 
@@ -103,7 +144,15 @@ int main()
     //test[2][0] = 1;
 
     rotation2rpy(test);
+    */
+
+    double testQ[3] = {1,2,3};
+
+    rotationT(testQ);
+
+    cout << "done" << endl;
 
 
     return 0;
 }
+
