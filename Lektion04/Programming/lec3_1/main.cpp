@@ -2,6 +2,8 @@
 #include <math.h>       /* sin & cos*/
 #include <vector>
 
+using namespace std; // Sorry Jes.. I had to..
+
 double ** rotation(double z,double y,double x)
 {
     double** euler = 0;
@@ -30,9 +32,10 @@ double ** rotation(double z,double y,double x)
 void conv_rotation2rpy(double R[3][3]){
     double pitch = 0, roll = 0, yaw = 0;
     if(R[2][0]==1){
+        cout << "R[2][0]: " << R[2][0] << " Special sequence!!" << endl;
         pitch = asin(-R[2][0]);
-        yaw = atan2(R[0][1],R[0][2]);
-        roll = atan2(R[1][1],R[1][2]);
+        yaw = atan2(R[0][1],R[0][2]) + roll;
+        roll = atan2(R[1][1],R[1][2]) + yaw;
 
         std::cout << roll << " " << pitch << " " << yaw << std::endl;
         std::cout << std::endl;
@@ -73,33 +76,12 @@ int main()
 {
     double pi = 3.14;
 
-    double **tmp = rotation(pi,pi,pi);
-
-    for(int i = 0; i < 3; i++){
-        for(int j = 0; j < 3; j++){
-            std::cout << tmp[i][j] << "\t";
-        }
-        std::cout << std::endl;
-    }
-
-    std::cout << "Tes" << std::endl;
-    std::cout << std::endl;
-
     double test[3][3];
-
-    for(int i = 0 ; i < 3 ; i++){
-        for(int j = 0 ; j < 3 ; j++){
-            test[i][j] = 0.5;
-        }
-    }
-
-    conv_rotation2rpy(test);
-
     std::cout << std::endl;
 
     for(int i = 0 ; i < 3 ; i++){
         for(int j = 0 ; j < 3 ; j++){
-            test[i][j] = 1;
+            test[i][j] = -1;
         }
     }
 
