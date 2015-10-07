@@ -1,0 +1,1 @@
+/home/student/ROVI/Lektion08/Programming/build/CMakeFiles/main.dir
