@@ -97,7 +97,7 @@ CMAKE_LINKER:FILEPATH=/usr/bin/ld
 //Path to a program.
 CMAKE_MAKE_PROGRAM:FILEPATH=/usr/bin/make
 
-CMAKE_MODULE_LINKER_FLAGS:STRING='  '
+CMAKE_MODULE_LINKER_FLAGS:STRING='   '
 
 //Flags used by the linker during debug builds.
 CMAKE_MODULE_LINKER_FLAGS_DEBUG:STRING=
@@ -129,7 +129,7 @@ CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
 //Runtime directory
 CMAKE_RUNTIME_OUTPUT_DIRECTORY:PATH=/home/student/ROVI/Lektion08/Programming/src/../bin/Release
 
-CMAKE_SHARED_LINKER_FLAGS:STRING='  '
+CMAKE_SHARED_LINKER_FLAGS:STRING='   '
 
 //Flags used by the linker during debug builds.
 CMAKE_SHARED_LINKER_FLAGS_DEBUG:STRING=
