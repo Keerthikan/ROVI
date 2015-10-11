@@ -36,7 +36,7 @@ double ** rotationT(double q[3])
     double** euler = 0;
     euler = new double*[4];
 
-    for (int i = 0; i < 3; ++i)
+    for (int i = 0; i < 4; ++i)
     {
         euler[i] = new double[4];
     }
@@ -58,9 +58,6 @@ double ** rotationT(double q[3])
     euler[3][2] = 0;
     euler[3][3] = 1;
 
-    euler[3][0] = 0;
-    euler[3][0] = 0;
-    euler[3][0] = 0;
 
     for(int j = 0 ; j<4 ; j++ ){
         for(int k = 0 ; k<4 ; k++ ){
@@ -68,7 +65,6 @@ double ** rotationT(double q[3])
         }
         cout << endl;
     }
-
     return euler;
 }
 
@@ -117,10 +113,65 @@ void rotation2rpy(double R[3][3]){
     }
 }
 
-int main()
+double ** rotationTr(double z,double y,double x)
 {
-    double pi = 3.14;
-/*
+    double** euler = 0;
+    euler = new double*[4];
+
+    for (int i = 0; i < 4; ++i)
+    {
+        euler[i] = new double[4];
+    }
+
+    euler[0][0] = cos(y)*cos(z);
+    euler[0][1] = sin(x)*sin(y)*cos(z)-cos(x)*sin(z);
+    euler[0][2] = cos(x)*sin(y)*cos(z)-sin(x)*sin(z);
+
+    euler[1][0] = cos(y)*sin(z);
+    euler[1][1] = sin(x)*sin(y)*sin(z)+cos(x)*cos(z);
+    euler[1][2] = cos(x)*sin(y)*sin(z)-sin(x)*cos(z);
+
+    euler[2][0] = -sin(y);
+    euler[2][1] = sin(x)*cos(y);
+    euler[2][2] = cos(x)*cos(y);
+
+    euler[3][0] = 0;
+    euler[3][1] = 0;
+    euler[3][2] = 0;
+    euler[3][3] = 1;
+
+    return euler;
+}
+
+
+double **  transformation(double q[3], vector<double>& RPY)
+{
+    double** result = 0;
+    result = new double*[4];
+
+    for (int i = 0; i < 4; ++i)
+    {
+        result[i] = new double[4];
+    }
+
+    for(int amount = 0; amount < RPY.size(); amount = amount +3){
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 3; col++) {
+                // Multiply the row of A by the column of B to get the row, column of product.
+                for (int inner = 0; inner < 2; inner++) {
+                    result[row][col] += rotationTr(RPY.at(amount), RPY.at(amount+1), RPY.at(amount)+2)[row][inner] * rotationT(q)[inner][col];
+                }
+                std::cout << result[row][col] << "  ";
+            }
+            std::cout << "\n";
+        }
+    }
+    return result
+}
+    int main()
+    {
+        double pi = 3.14;
+        /*
     double test[3][3];
     std::cout << std::endl;
 
@@ -146,13 +197,28 @@ int main()
     rotation2rpy(test);
     */
 
-    double testQ[3] = {1,2,3};
+        double testQ[3] = {1,2,3};
 
-    rotationT(testQ);
+        rotationT(testQ);
 
-    cout << "done" << endl;
+        cout << "done" << endl;
+        vector<double> RPY;
+        float random_number = 0;
+
+        for(int j = 0 ; j < 9 ; j++){
+            srand((unsigned)time(0));
+            random_number = rand()%10000+1;
+
+            for(int l = 0 ; l < 1000000000/2 ; l++ ){
+
+            }
+
+            RPY.push_back(random_number/10000);
+        }
+        cout << "done" << endl;
+        cout <<  RPY.size() << endl;
 
 
-    return 0;
-}
+        return 0;
+    }
 
