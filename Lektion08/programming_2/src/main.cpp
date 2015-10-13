@@ -40,14 +40,20 @@ bool checkCollisions(Device::Ptr device, const State &state, const CollisionDete
 int main(int argc, char** argv) {
     const string wcFile = "/home/student/ROVI/Lektion08/programming_2/Kr16WallWorkCell/Scene.wc.xml";
     const string deviceName = "KukaKr16";
+    //const string bottle = "bottle";
     cout << "Trying to use workcell " << wcFile << " and device " << deviceName << endl;
 
     WorkCell::Ptr wc = WorkCellLoader::Factory::load(wcFile);
     Device::Ptr device = wc->findDevice(deviceName);
+    //Device::Ptr bottle_device = wc->findFrame(bottle);
     if (device == NULL) {
         cerr << "Device: " << deviceName << " not found!" << endl;
         return 0;
     }
+    //if (bottle == NULL) {
+    //    cerr << "Device: " << bottle << " not found!" << endl;
+    //    return 0;
+    //}
     const State state = wc->getDefaultState();
 
     CollisionDetector detector(wc, ProximityStrategyFactory::makeDefaultCollisionStrategy());
@@ -65,9 +71,9 @@ int main(int argc, char** argv) {
     double extend = 0.1;
     QToQPlanner::Ptr planner = RRTPlanner::makeQToQPlanner(constraint, sampler, metric, extend, RRTPlanner::RRTConnect);
 
-    Q from(6,1.571,0.006,0.030,0.153,0.762,4.490);
+    Q from(6,3.229,2.182,1.117,6.109, 2.269, 6.109);
     Q to(6,-3.142,-0.827,-3.002,-3.143,0.099,-1.573);
-    //Q to(6,1.7,0.6,-0.8,0.3,0.7,-0.5); // Very difficult for planner
+
 
     if (!checkCollisions(device, state, detector, from))
         return 0;
@@ -89,6 +95,6 @@ int main(int argc, char** argv) {
         cout << *it << endl;
     }
 
-    cout << "Program done." << endl;
+    cout << "Program done  - kiddi." << endl;
     return 0;
 }

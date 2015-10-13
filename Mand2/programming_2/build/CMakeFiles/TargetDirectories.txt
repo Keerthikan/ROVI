@@ -1,0 +1,1 @@
+/home/student/ROVI/Mand2/programming_2/build/CMakeFiles/main.dir
