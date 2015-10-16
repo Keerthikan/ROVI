@@ -22,6 +22,7 @@ path_size = mean(path_size.')';
 
 figure(1)
 [ax h1 h2] = plotyy(extend_var, path_size, extend_var, time_ave);
+
 rectangle('Position', [0.8, -2, 1, 190], 'LineStyle', '--', 'EdgeColor', 'r');
 
 xlabel('Epsilon variable');
