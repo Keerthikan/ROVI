@@ -96,9 +96,9 @@ tuple<double, double, double> pathPlannerFunc(double extend){
 
 
 
-    cout << extend<< "\tPath of length " << path.size() << " found in " << t.getTime() << " seconds." << endl;
+    //cout << extend<< "\tPath of length " << path.size() << " found in " << t.getTime() << " seconds." << endl;
     if (t.getTime() >= MAXTIME) {
-        cout << "Notice: max time of " << MAXTIME << " seconds reached." << endl;
+        //cout << "Notice: max time of " << MAXTIME << " seconds reached." << endl;
     }
     /*
     for (QPath::iterator it = path.begin(); it < path.end(); it++) {
@@ -106,7 +106,7 @@ tuple<double, double, double> pathPlannerFunc(double extend){
     }
 */
     for (QPath::iterator it = path.begin(); it < path.end(); it++) {
-        cout << "set" << *it << endl;
+        //cout << "set" << *it << endl;
     }
     auto tmp = make_tuple(extend, path.size(),t.getTime());
 
@@ -114,18 +114,19 @@ tuple<double, double, double> pathPlannerFunc(double extend){
 }
 
 int main(int argc, char** argv) {
-    /*
+
     vector<tuple<double, double, double>> result;
+    Math::seed();
 
     for(double i=0.1 ; i < 6.06 ; i += 0.01 ){
         //cout << i << endl;
         result.push_back(pathPlannerFunc(i));
     }
-    */
-    auto lol = pathPlannerFunc(0.583);
-    //for ( const auto& i : result) {
-    //    cout <<  get<0>(i) << "/t"  << get<1>(i) <<"/t"<<get<2>(i) <<"\n";
-    //}
+
+    //auto lol = pathPlannerFunc(0.583);
+    for ( const auto& i : result) {
+        cout <<  get<0>(i) << ","  << get<1>(i) <<","<<get<2>(i) <<"\n";
+    }
 
 
     return 0;
