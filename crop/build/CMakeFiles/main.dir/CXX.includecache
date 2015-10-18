@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/student/Arbejde/crop/src/main.cpp
+opencv2/highgui/highgui.hpp
+/home/student/Arbejde/crop/src/opencv2/highgui/highgui.hpp
+opencv2/imgproc/imgproc.hpp
+/home/student/Arbejde/crop/src/opencv2/imgproc/imgproc.hpp
+string
+-
+iostream
+-
+math.h
+-
+fstream
+-
+stdio.h
+-
+
