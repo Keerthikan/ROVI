@@ -7,6 +7,10 @@
 #include <tuple>
 #include <vector>
 
+#include <typeinfo>
+
+#include <rw/pathplanning/PathAnalyzer.hpp>
+
 #include <rw/kinematics/Kinematics.hpp>
 #include <rw/kinematics/MovableFrame.hpp>
 #include <rw/kinematics/Frame.hpp>
@@ -52,8 +56,8 @@ tuple<double, double, double> pathPlannerFunc(double extend){
     const string deviceName = "KukaKr16";
     const string bottle = "Bottle";
 
-    Q to(6,-3.142,-0.827,-3.002,-3.143,0.099,-1.573);
-    Q from(6,1.571,0.006,0.030,0.153,0.762,4.490);
+    Q from(6,-3.142,-0.827,-3.002,-3.143,0.099,-1.573);
+    Q to(6,1.571,0.006,0.030,0.153,0.762,4.490);
 
     WorkCell::Ptr wc = WorkCellLoader::Factory::load(wcFile);
     Device::Ptr device = wc->findDevice(deviceName);
@@ -79,7 +83,6 @@ tuple<double, double, double> pathPlannerFunc(double extend){
 
     QSampler::Ptr sampler = QSampler::makeConstrained(QSampler::makeUniform(device),constraint.getQConstraintPtr());
     QMetric::Ptr metric = MetricFactory::makeEuclidean<Q>();
-    //double extend = 0.5;
     QToQPlanner::Ptr planner = RRTPlanner::makeQToQPlanner(constraint, sampler, metric, extend, RRTPlanner::RRTConnect);
 
     if (!checkCollisions(device, state, detector, from))
@@ -87,28 +90,31 @@ tuple<double, double, double> pathPlannerFunc(double extend){
     if (!checkCollisions(device, state, detector, to))
         exit(-1);
 
-    //cout << "Planning from " << from << " to " << to << endl;
+    PathAnalyzer::CartesianAnalysis distance_traveled;
+    double path_length = 0;
+
+    PathAnalyzer path_analyse(device,state);
+
     QPath path;
+
     Timer t;
     t.resetAndResume();
     planner->query(from,to,path,MAXTIME);
     t.pause();
 
+    distance_traveled = path_analyse.analyzeCartesian(path,deviceB);
+    path_length += distance_traveled.length;
 
-
-    //cout << extend<< "\tPath of length " << path.size() << " found in " << t.getTime() << " seconds." << endl;
+    cout << extend<< "\tPath of length " << path.size() << " found in " << t.getTime() << " seconds." << endl;
     if (t.getTime() >= MAXTIME) {
-        //cout << "Notice: max time of " << MAXTIME << " seconds reached." << endl;
+        cout << "Notice: max time of " << MAXTIME << " seconds reached." << endl;
     }
-    /*
+
     for (QPath::iterator it = path.begin(); it < path.end(); it++) {
-        cout << "set" << *it << endl;
+        cout << "set" << *it << endl;//"setQ" << bins.substr(3,bins.length()) << endl;
     }
-*/
-    for (QPath::iterator it = path.begin(); it < path.end(); it++) {
-        //cout << "set" << *it << endl;
-    }
-    auto tmp = make_tuple(extend, path.size(),t.getTime());
+
+    auto tmp = make_tuple(extend, path_length,t.getTime());
 
     return tmp;
 }
@@ -118,16 +124,14 @@ int main(int argc, char** argv) {
     vector<tuple<double, double, double>> result;
     Math::seed();
 
-    for(double i=0.1 ; i < 6.06 ; i += 0.01 ){
-        //cout << i << endl;
+
+    for(double i=0.1 ; i < 6.28 ; i += 0.01 ){
         result.push_back(pathPlannerFunc(i));
     }
 
-    //auto lol = pathPlannerFunc(0.583);
     for ( const auto& i : result) {
         cout <<  get<0>(i) << ","  << get<1>(i) <<","<<get<2>(i) <<"\n";
     }
-
 
     return 0;
 }
