@@ -1,3 +1,0 @@
-clc;clear;
-
-m = csvread('result.csv');

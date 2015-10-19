@@ -254,7 +254,7 @@ setQ{1.571, 0.006, 0.03, 0.153, 0.762, 4.49}
 To acquire the optimal value of epsilon for the pathplanning between $Q_{pick}$ to $Q_{place}$,  the maximum needed change in joint configuration had to be computed. Each joint is capable of turning 2$\pi$ Rad, making the search for an optimal epsilon limited to the range of 0 - 2$\pi$
  
  
-\noindent To find the optimal value, were different paths computed using different epsilon values with an stepsize of 0.01.  At each step was the path length, planning time  and the time to compute the plan calculated.   Which led to these graph, each step was computed 10 times, and the average of each seperate value plotted in this graph. .\\[0.2cm]
+\noindent To find the optimal value, were different paths computed using different epsilon values with an stepsize of 0.01.  At each step was the path length, movement time.   Which led to this graph, each step was computed 10 times, and the average of each value plotted is plotted in Figure \ref{fig::graph} .\\[0.2cm]
 
 \begin{figure}[H]
 \hspace{-3.5cm}\includegraphics[scale=0.55]{img/graph.eps}
@@ -262,7 +262,7 @@ To acquire the optimal value of epsilon for the pathplanning between $Q_{pick}$ 
 \label{fig::graph}
 \end{figure}
 
-\noindent This(ref til forrige) graph compares the path length compared to time it takes to perform the movement.  It can clearly be seen that  that around $\epsilon = 2.7$  both the graph intersect each other, showing the minimum length and movement time needed for this movement. 
+\noindent Figure \ref{fig::graph}  compares the path length  to time it takes to perform the movement.  It can clearly be seen that  that around $\epsilon = 2.7$  both the graphs intersect each other, showing the optimal length and movement time  for this movement. 
 \\
 
 The graph shows that both graph intersect each other at $\epsilon = 2.7$ making it the optimal choice for this movement.  The graph also show a correlation between these parameter.  The pathlength increases for higher of $\epsilon$ due, which would occur due to overshoot, and vice versa a higher movement time for a low epsilon, but a low pathlength, as the robot will be able to move in small steps, ensuring that it still on the right track. 
@@ -274,7 +274,7 @@ The graph shows that both graph intersect each other at $\epsilon = 2.7$ making 
 A program that could make a robotic pick and place operation between two joint configurations was successfully made.\\[0.2cm]
 
 
-\noindent For finding a collision free path between the two joint configurations was the RRT-connect algorithm implemented in a C++ project, and the found path was put in a LUA script and run in RobWorkStudio for testing if the KukaKr16 collides with any of the surroundings in the workcell. The best value for the parameter epsilon was found by testing the implementation with various values of epsilon. By plotting and comparing the values for the planning time and path size for the different epsilon values, an estimation of the best epsilon value for this project was found to be between 0.8 and 1.8,
+\noindent For finding a collision free path between the two joint configurations was the RRT-connect algorithm implemented in a C++ project, and the found path was put in a LUA script and run in RobWorkStudio for testing if the KukaKr16 collides with any of the surroundings in the workcell. The best value for the parameter epsilon was found by testing the implementation with various values of epsilon. By plotting and comparing the values for the planning time and path size for the different epsilon values, an estimation of the best epsilon value for this project was found to be between 2.2 and 3.2.
 
 
 \end{document}
