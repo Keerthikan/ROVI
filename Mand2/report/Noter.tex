@@ -256,9 +256,11 @@ To acquire the optimal value of epsilon for the pathplanning between $Q_{pick}$ 
  
 \noindent To find the optimal value, were different paths computed using different epsilon values with an stepsize of 0.01.  At each step was the path length, planning time  and the time to compute the plan calculated.   Which led to these graph, each step was computed 10 times, and the average of each seperate value plotted in this graph. .\\[0.2cm]
 
-%\begin{figure}[]
-%\includegraphics[width = \textwidth]{"../graphs.eps"}
-%\end{figure}
+\begin{figure}[H]
+\hspace{-3.5cm}\includegraphics[scale=0.55]{img/graph.eps}
+\caption{Comparison of the path length and the time it takes to perform the movement}
+\label{fig::graph}
+\end{figure}
 
 \noindent This(ref til forrige) graph compares the path length compared to time it takes to perform the movement.  It can clearly be seen that  that around $\epsilon = 2.7$  both the graph intersect each other, showing the minimum length and movement time needed for this movement. 
 \\
