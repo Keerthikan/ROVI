@@ -2,7 +2,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6.0)
 
 # The name of the project
-PROJECT(programming_2)
+PROJECT(program)
 MESSAGE(${PROJECT_NAME} ":")
 
 # Used to resolve absolute path names

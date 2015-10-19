@@ -48,7 +48,7 @@ bool checkCollisions(Device::Ptr device, const State &state, const CollisionDete
 
 tuple<double, double, double> pathPlannerFunc(double extend){
 
-    const string wcFile = "/home/jes/Desktop/Kr16WallWorkCell/Scene.wc.xml";
+    const string wcFile = "/home/student/ROVI/Mand2/Kr16WallWorkCell/Scene.wc.xml";
     const string deviceName = "KukaKr16";
     const string bottle = "Bottle";
 

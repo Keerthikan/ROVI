@@ -9,12 +9,6 @@ function setQ(q)
 	rws.getRobWorkStudio():setState(state) 
 end
 
-function gripperQ(q)
-	qq = rw.Q(#q,q[1],q[2],q[3])
-    gripper:setQ(qq,state)
-    rws.getRobWorkStudio():setState(state) 
-end
-
 setQ{-3.142, -0.827, -3.002, -3.143, 0.099, -1.573}
 
 rw.gripFrame(bottle, device:getEnd(),state)

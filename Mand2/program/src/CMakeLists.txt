@@ -30,6 +30,10 @@ SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${ROOT}/../bin/${CMAKE_BUILD_TYPE}" CACHE PA
 SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${ROOT}/../libs/${CMAKE_BUILD_TYPE}" CACHE PATH "Library directory" FORCE)
 SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${ROOT}/../libs/${CMAKE_BUILD_TYPE}" CACHE PATH "Archive directory" FORCE)
 
+ADD_DEFINITIONS(
+    -std=c++11 # Or -std=c++0x
+    # Other flags
+)
 # Add the source files to build
 SET(SrcFiles main.cpp)
 
