@@ -212,7 +212,7 @@ Adds the frame bottle at the end of the device (being the robot). which is then 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.4]{img/Selection_051.png}
-\caption{Illustration of the RRT-connect algorithm}
+\caption{Illustration of the tree structure}
 \label{fig::rrt}
 \end{figure}
 
@@ -251,25 +251,16 @@ setQ{1.571, 0.006, 0.03, 0.153, 0.762, 4.49}
 
 
 \section{Data processing}
-To acquire the optimal value for epsilon the pathplanning between $Q_{pick}$ to $Q_{place}$,  the maximum needed change in joint configuration had to be computed. This was found by computing the difference in $Q_{pick}$ and $Q_{place}$, and set the max value to the maximal difference.
-\begin{eqnarray*}
-Abs(q_{pick}  - q_{place}) &=& Abs((-3.142,-0.827,-3.002,-3.143,0.099,-1.573)  \\ &  &- (1.571,0.006,0.030,0.153,0.762,4.490)) [rad]\\ 
-						&=& (4.713, 0.833, 3.032, 3.296, 0.663, 6.063) [rad]
-\end{eqnarray*}
+To acquire the optimal value of epsilon for the pathplanning between $Q_{pick}$ to $Q_{place}$,  the maximum needed change in joint configuration had to be computed. Each joint is capable of turning 2$\pi$ Rad, making the search for an optimal epsilon limited to the range of 0 - 2$\pi$
  
-\noindent The maximum needed stepsize can by computing the difference be found to be 6.063 [rad].  Any higher value than that would increase the rate of collision rate, and make the computation time higher. which is why all the computation is limited to the value of 6.063.\\[0.2cm] 
+ 
+\noindent To find the optimal value were different paths computed using different epsilon values with an stepsize of 0.01.  At each step was the path length, planning time  and the time to compute the plan calculated.   Which led to this graph, each step was computed 10 times, and the average of each seperate value plotted in this graph. .\\[0.2cm]
 
 
 
-\noindent To find the optimal value was different path computed using different epsilon values with an stepsize of 0.01.  At each step was the pathlength, planning time computed.  Which led to this graph, each step was computed 10 times, and average those values was then used as the value for the path length and planing time.  All these value was plotted on this graph.\\[0.2cm]
+\noindent The graph on figure \ref{img::test} shows a  correlation between the stepsize and the computation, a higher stepsize leads to a higher computation and vice versa.  This is due to the increasing amount of colision occuring when the stepsize becomes larger.  
+%Add conclussion 
 
-\begin{figure}[H]
-\hspace{-4cm}\includegraphics[scale=0.57]{img/graph.eps}
-\caption{Test results}
-\label{img::test}
-\end{figure}
-
-\noindent The graph on figure \ref{img::test} shows a  correlation between the stepsize and the computation, a higher stepsize leads to a higher computation and vice versa.  As stated before this is because the increasing amount of colision occuring when the stepsize becomes larger, and therefore has to find new random points.  The optimal value for epsilon is given as where the both graph intersect which occurs when epsilon is at 1.35. 
 
 \newpage
 \section{Conclusion}

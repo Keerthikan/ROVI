@@ -3,4 +3,4 @@
 \contentsline {subsection}{\numberline {1.1}RRT-connect}{3}{subsection.1.1}
 \contentsline {section}{\numberline {2}Data acquisition}{4}{section.2}
 \contentsline {section}{\numberline {3}Data processing}{5}{section.3}
-\contentsline {section}{\numberline {4}Conclusion}{7}{section.4}
+\contentsline {section}{\numberline {4}Conclusion}{6}{section.4}
