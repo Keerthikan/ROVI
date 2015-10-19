@@ -28,7 +28,6 @@ path_length_ave = mean(path_length.')';
 figure(1)
 x = [0.8 1 1.2 1.35 1.5 1.9 2  3 4 5 6];
 [ax h1 h2] = plotyy(ext_var, path_size_ave, ext_var, time_ave);
-
 set(gca,'XTick',x);
 set(gca,'XTickLabel',x);
 axis([0 6.5 0 120])
@@ -41,7 +40,7 @@ xlabel('Epsilon variable');
 axes(ax(1)); ylabel('Path size in N');
 axis([0 6.5 0 120])
 
-axes(ax(2)); ylabel('Planning time in sec');
+axes(ax(2)); ylabel('Planning time in sec','Color','r');
 axis([0 6.5 0 inf])
 
 legend('Analyse time', 'Path length');

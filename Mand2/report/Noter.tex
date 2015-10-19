@@ -12,6 +12,7 @@
 \usepackage{url}										% Clickable URL's
 \usepackage{wrapfig}									% Wrap text along figures
 
+
 \frenchspacing									% Better looking spacings after periods
 %\pagestyle{empty}								% No pagenumbers/headers/footers
 %\usepackage{bbding}									% Symbols
@@ -70,7 +71,6 @@
 \usepackage{subcaption}
 \DeclareCaptionFont{gray}{\color{gray}}
 \captionsetup{textfont={footnotesize,sc,gray},font={footnotesize,sc,gray}}
-
 \usepackage{blindtext}
 
 % Test
@@ -254,9 +254,16 @@ setQ{1.571, 0.006, 0.03, 0.153, 0.762, 4.49}
 To acquire the optimal value of epsilon for the pathplanning between $Q_{pick}$ to $Q_{place}$,  the maximum needed change in joint configuration had to be computed. Each joint is capable of turning 2$\pi$ Rad, making the search for an optimal epsilon limited to the range of 0 - 2$\pi$
  
  
-\noindent To find the optimal value were different paths computed using different epsilon values with an stepsize of 0.01.  At each step was the path length, planning time  and the time to compute the plan calculated.   Which led to this graph, each step was computed 10 times, and the average of each seperate value plotted in this graph. .\\[0.2cm]
+\noindent To find the optimal value were different paths computed using different epsilon values with an stepsize of 0.01.  At each step was the path length, planning time  and the time to compute the plan calculated.   Which led to these graph, each step was computed 10 times, and the average of each seperate value plotted in this graph. .\\[0.2cm]
 
+%\begin{figure}[]
+%\includegraphics[width = \textwidth]{"../graphs.eps"}
+%\end{figure}
 
+\noindent This(ref til forrige) graph compares the path length compared to time it takes to perform the movement.  It can clearly be seen that  that around $\epsilon = 2.7$  both the graph intersect each other, showing the minimum length and movement time needed for this movement. 
+\\
+
+The graph shows that both graph intersect each other at $\epsilon = 2.7$ making it the optimal choice for this movement.  The graph also shows the pathlength increases for higher of $\epsilon$ due, which would occur due to overshoot, and vice versa a higher movement time for a low epsilon, but a low pathlength, as the robot will be able to move in small steps, ensuring that it still on the right track. 
 
 \noindent The graph on figure \ref{img::test} shows a  correlation between the stepsize and the computation, a higher stepsize leads to a higher computation and vice versa.  This is due to the increasing amount of colision occuring when the stepsize becomes larger.  
 %Add conclussion 
