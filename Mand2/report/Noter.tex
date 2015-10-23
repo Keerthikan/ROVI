@@ -216,7 +216,7 @@ Adds the frame bottle at the end of the device (being the robot). which is then 
 \label{fig::rrt}
 \end{figure}
 
-At which gripFrame add the bottle at the end of Joint6 being the same as the ToolMount.\\[0.2cm] 
+\noindent At which gripFrame add the bottle at the end of Joint6 being the same as the ToolMount.\\[0.2cm] 
 
 \noindent These were the addition made to the code. The code itself print the different joint configuration given different epsilon values (given as extend).
 
@@ -262,9 +262,7 @@ To acquire the optimal value of epsilon for the pathplanning between $Q_{pick}$ 
 \label{fig::graph}
 \end{figure}
 
-\noindent Figure \ref{fig::graph}  compares the path length  to time it takes to perform the movement.  It can clearly be seen that  that around $\epsilon = 2.7$  both the graphs intersect each other, showing the optimal length and movement time  for this movement. 
-\\
-
+\noindent Figure \ref{fig::graph}  compares the path length  to time it takes to perform the movement.  It can clearly be seen that  that around $\epsilon = 2.7$  both the graphs intersect each other, showing the optimal length and movement time  for this movement.\\[0.2cm]
 The graph shows that both graph intersect each other at $\epsilon = 2.7$ making it the optimal choice for this movement.  The graph also show a correlation between these parameter.  The pathlength increases for higher of $\epsilon$ due, which would occur due to overshoot, and vice versa a higher movement time for a low epsilon, but a low pathlength, as the robot will be able to move in small steps, ensuring that it still on the right track. 
 %Add conclussion 
 
@@ -272,8 +270,6 @@ The graph shows that both graph intersect each other at $\epsilon = 2.7$ making 
 \newpage
 \section{Conclusion}
 A program that could make a robotic pick and place operation between two joint configurations was successfully made.\\[0.2cm]
-
-
 \noindent For finding a collision free path between the two joint configurations was the RRT-connect algorithm implemented in a C++ project, and the found path was put in a LUA script and run in RobWorkStudio for testing if the KukaKr16 collides with any of the surroundings in the workcell. The best value for the parameter epsilon was found by testing the implementation with various values of epsilon. By plotting and comparing the values for the planning time and path size for the different epsilon values, an estimation of the best epsilon value for this project was found to be between 2.2 and 3.2.
 
 
