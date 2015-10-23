@@ -101,7 +101,6 @@ tuple<double, double, double> pathPlannerFunc(double extend){
     t.resetAndResume();
     planner->query(from,to,path,MAXTIME);
     t.pause();
-
     distance_traveled = path_analyse.analyzeCartesian(path,deviceB);
     path_length += distance_traveled.length;
 

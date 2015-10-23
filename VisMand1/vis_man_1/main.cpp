@@ -86,8 +86,11 @@ int main() {
     hist(img,path);
     cout << "Hist done: " << path+img << endl;
 
-    eql(img,path);
-    cout << "Eql done: " << path+img << endl;
+
+    //eql(img,path);
+    //cout << "Eql done: " << path+img << endl;
+
+
 
     return 0;
 }
