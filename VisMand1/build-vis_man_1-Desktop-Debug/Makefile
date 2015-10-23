@@ -45,8 +45,12 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../vis_man_1/main.cpp 
-OBJECTS       = main.o
+SOURCES       = ../vis_man_1/main.cpp \
+		../vis_man_1/histogram.cpp \
+		../vis_man_1/equalization.cpp 
+OBJECTS       = main.o \
+		histogram.o \
+		equalization.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/shell-unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -281,8 +285,14 @@ compiler_clean:
 
 ####### Compile
 
-main.o: ../vis_man_1/main.cpp 
+main.o: ../vis_man_1/main.cpp ../vis_man_1/histogram.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../vis_man_1/main.cpp
+
+histogram.o: ../vis_man_1/histogram.cpp ../vis_man_1/histogram.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o histogram.o ../vis_man_1/histogram.cpp
+
+equalization.o: ../vis_man_1/equalization.cpp ../vis_man_1/equalization.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o equalization.o ../vis_man_1/equalization.cpp
 
 ####### Install
 
