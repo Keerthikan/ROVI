@@ -1,6 +1,5 @@
 #include "equalization.h"
-using namespace std;
-using namespace cv;
+
 
 
 void eql(const std::string& filename, const std::string& path, const std::string& saveas) {
