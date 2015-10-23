@@ -10,7 +10,7 @@
 using namespace std;
 using namespace cv;
 
-void hist(const std::string& filename, const std::string& path)
+void hist(const std::string& filename, const std::string& path, const std::string& saveas)
 {
     Mat gray = imread(filename,CV_LOAD_IMAGE_GRAYSCALE);
 
@@ -49,10 +49,10 @@ void hist(const std::string& filename, const std::string& path)
               Scalar( 0, 0, 0), 2, 8, 0  );
     }
 
-    imwrite( path+"calcHist.png", histImage);
+    imwrite( path+saveas, histImage);
 }
 
-void eql(const std::string& filename, const std::string& path) {
+void eql(const std::string& filename, const std::string& path, const std::string& saveas) {
     Mat img = cv::imread(filename,CV_LOAD_IMAGE_GRAYSCALE);
 
     if(img.data < 0){
@@ -72,21 +72,20 @@ void eql(const std::string& filename, const std::string& path) {
     double total;
     total = image.rows * image.cols;
 
-
     Mat equalize_image;
     equalizeHist(image,equalize_image);
 
-    imwrite( path+"equalized.png", equalize_image);
+    imwrite( path+saveas, equalize_image);
 }
 
 int main() {
-    string img = "img/Image1.png";
-    string path = "img1/";
+    string path = "img3/";
+    string img = path+"src.png";
 
-    hist(img,path);
+    hist(img,path,"Hist.png");
     cout << "Hist done: " << path+img << endl;
 
-    eql(img,path);
+    eql(img,path,"Eql.png");
     cout << "Eql done: " << path+img << endl;
 
     return 0;
