@@ -1,0 +1,209 @@
+\documentclass[11pt]{article} 
+
+%\documentclass[paper=a4,fontsize=11pt]{scrartcl}	 			% KOMA-article class
+							
+%\usepackage[english]{babel}								% English language/hyphenation
+%\usepackage[protrusion=true,expansion=true]{microtype}		% Better typography
+\usepackage{amsmath,amsfonts,amsthm}					% Math packages
+\usepackage[pdftex]{graphicx}								% Enable pdflatex
+\usepackage[svgnames]{xcolor}							% Colors by their 'svgnames'
+\usepackage{geometry}
+	\textheight=700px									% Saving trees ;-) 
+\usepackage{url}										% Clickable URL's
+\usepackage{wrapfig}									% Wrap text along figures
+
+
+\frenchspacing									% Better looking spacings after periods
+%\pagestyle{empty}								% No pagenumbers/headers/footers
+%\usepackage{bbding}									% Symbols
+
+
+% ------- Enable UTF8 characters ------- %
+%\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage[colorinlistoftodos,prependcaption,textsize=normal]{todonotes}
+
+\usepackage{listings}
+\usepackage{color}
+
+%\usepackage{pdfpages}
+
+% ------------ Code Listing ------------- %
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=false,
+  language=C++,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3,
+  moredelim=**[is][\color{mauve}]{@}{@},
+}
+
+% ------- Page layout ------- %
+\usepackage{fullpage}
+\usepackage{hyperref} % clickable references
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
+
+\setlength\parindent{0pt}
+
+% ------- Images ------- %
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{subcaption}
+\DeclareCaptionFont{gray}{\color{gray}}
+\captionsetup{textfont={footnotesize,sc,gray},font={footnotesize,sc,gray}}
+\usepackage{blindtext}
+
+% Test
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,shadows}
+\newcommand{\mx}[1]{\mathbf{\bm{#1}}} % Matrix command
+\newcommand{\vc}[1]{\mathbf{\bm{#1}}} % Vector command
+
+\usetikzlibrary{arrows}
+
+
+\title{Elektriske Maskiner}
+
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+
+
+\textsc{\LARGE University of Southern Denmark}\\[1.5cm]
+\textsc{\Large Introduction to Robotics and Computer Vision}\\[0.5cm]
+\vfill
+\hrule ~\\[0.3cm]
+{ \huge \bfseries Vision -- Mandatory Exercise 1\\ Image restoration\\[0.4cm] }
+\hrule ~\\[1.5cm]
+\vfill
+
+% Author and supervisor
+\begin{minipage}[t]{7.9cm}
+\begin{flushleft} \large
+\emph{by:}\\
+Keerthikan Ratnarajah  \\
+kerat12@student.sdu.dk \\
+Jes Grydholdt Jepsen   \\
+jejep12@student.sdu.dk 
+\end{flushleft}
+\end{minipage}
+\begin{minipage}[t]{7.9cm}
+\begin{flushright} \large
+
+\end{flushright}
+\end{minipage}
+
+\vspace{1.2cm}
+Dato: \today
+
+
+\end{center}
+\end{titlepage}
+
+\tableofcontents
+
+\newpage
+\section{Introduction}
+\input{intro.tex}
+
+\section{Image 1}
+\input{img1.tex}
+
+\section{Image 2 -- Salt and Pepper noise}
+\input{img2.tex}
+
+\section{Image 3}
+\input{img3.tex}
+
+\section{Image 4}
+\input{img4.tex}
+
+\section{Image 5}
+\input{img5.tex}
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
