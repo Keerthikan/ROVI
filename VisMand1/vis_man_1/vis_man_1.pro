@@ -6,10 +6,12 @@ CONFIG -= qt
 SOURCES += main.cpp \
     histogram.cpp \
     equalization.cpp \
-    calchistogram.cpp
+    calchistogram.cpp \
+    ContraHarmonic.cpp
 LIBS += `pkg-config opencv --libs`
 
 HEADERS += \
     histogram.h \
     equalization.h \
-    calchistogram.h
+    calchistogram.h \
+    ContraHarmonic.h

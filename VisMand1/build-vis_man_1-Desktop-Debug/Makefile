@@ -48,11 +48,13 @@ OBJECTS_DIR   = ./
 SOURCES       = ../vis_man_1/main.cpp \
 		../vis_man_1/histogram.cpp \
 		../vis_man_1/equalization.cpp \
-		../vis_man_1/calchistogram.cpp 
+		../vis_man_1/calchistogram.cpp \
+		../vis_man_1/ContraHarmonic.cpp 
 OBJECTS       = main.o \
 		histogram.o \
 		equalization.o \
-		calchistogram.o
+		calchistogram.o \
+		ContraHarmonic.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/shell-unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -288,7 +290,9 @@ compiler_clean:
 ####### Compile
 
 main.o: ../vis_man_1/main.cpp ../vis_man_1/histogram.h \
-		../vis_man_1/equalization.h
+		../vis_man_1/equalization.h \
+		../vis_man_1/calchistogram.h \
+		../vis_man_1/ContraHarmonic.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../vis_man_1/main.cpp
 
 histogram.o: ../vis_man_1/histogram.cpp ../vis_man_1/histogram.h
@@ -299,6 +303,9 @@ equalization.o: ../vis_man_1/equalization.cpp ../vis_man_1/equalization.h
 
 calchistogram.o: ../vis_man_1/calchistogram.cpp ../vis_man_1/calchistogram.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o calchistogram.o ../vis_man_1/calchistogram.cpp
+
+ContraHarmonic.o: ../vis_man_1/ContraHarmonic.cpp ../vis_man_1/ContraHarmonic.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ContraHarmonic.o ../vis_man_1/ContraHarmonic.cpp
 
 ####### Install
 
