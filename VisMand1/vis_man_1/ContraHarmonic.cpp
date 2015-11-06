@@ -4,8 +4,7 @@ void ContraHarmonic(Mat src, Mat dst, int kernel, double P)
 {
   cout << "got it" << endl;
     Mat temp = src.clone();
-    Mat dst11 = src.clone();
-    cout << src.rows <<  " " << src.cols << endl;
+    Mat dst111 = src.clone();
     copyMakeBorder(temp,temp,kernel-1,kernel-1,kernel-1,kernel-1,BORDER_CONSTANT,Scalar(0,0,0));
 
     for(int row = kernel/2; row < temp.rows - kernel/2-1; row++)
@@ -20,17 +19,17 @@ void ContraHarmonic(Mat src, Mat dst, int kernel, double P)
             {
                 den += pow(temp.at<double>(row+i,col+j),P);
                 num += pow(temp.at<double>(row+i,col+j),P+1);
-                cout <<"Row: "<<row+i << " " << "col: "<< col + j << endl;
+                //cout <<"Row: "<<row+i << " " << "col: "<< col + j << endl;
             }
           }
 
         //cout << num/den << endl;
         double value = num/den;
-        dst11.at<double>(row,col) = value;
+        dst.at<double>(row,col) = value;
       }
     }
     cout << "done " << endl;
-    dst11.convertTo(dst,CV_8U);
-    imshow("sadas",dst);
-    waitKey(0);
+    dst111.convertTo(dst,CV_8U);
+    imshow("hey",dst);
+    waitKey();
 }
