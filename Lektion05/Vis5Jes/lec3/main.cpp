@@ -7,7 +7,7 @@
 #include <math.h>
 #include "opencv2/nonfree/nonfree.hpp"
 
-void run(const std::string& filename, bool highpass) {
+void run(const std::string& filename, bool highpass, bool print) {
     cv::Mat img = cv::imread(filename,CV_LOAD_IMAGE_GRAYSCALE);
 
     cv::Mat padded;
@@ -58,6 +58,9 @@ void run(const std::string& filename, bool highpass) {
 
     normalize(magI, magI, 0, 1, CV_MINMAX); // Transform the matrix with float values into a
 
+    if(print==true)
+        cv::imwrite("Mag.png",magI);
+
     cv::imshow(filename, img);
     cv::imshow("Mag",magI);
     cv::waitKey();
@@ -68,10 +71,11 @@ void run(const std::string& filename, bool highpass) {
 
 int main()
 {
-    run("lena.bmp", false);
-    run("lena_face.bmp", false);
-    run("lena_hair.bmp", false);
-    run("lena_hat.bmp", false);
+    run("lena.bmp", false, false);
+    run("lena_face.bmp", false, false);
+    run("lena_hair.bmp", false, false);
+    run("lena_hat.bmp", false, true);
+    run("src.png", false, true);
 
     cv::waitKey();
 
