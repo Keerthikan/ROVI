@@ -1,25 +1,33 @@
 #include "ContraHarmonic.h"
 
-Mat ContraHarmonic(Mat src, int kernel, double P)
+void ContraHarmonic(Mat src, Mat dst, int kernel, double P)
 {
-    Mat Num = Mat(src.rows,src.cols,CV_8U,Scalar(1,1,1));
-    Mat Den = Mat(src.rows,src.cols,CV_8U,Scalar(1,1,1));
-    for(int i = 0; i < src.rows; i++)
+  cout << "got it" << endl;
+    Mat temp = src.clone();
+    dst = src.clone();
+    copyMakeBorder(temp,temp,kernel-1,kernel-1,kernel-1,kernel-1,BORDER_CONSTANT,Scalar(0,0,0));
+
+    for(int row = kernel/2; row < temp.rows - kernel/2-1; row++)
     {
-        for(int j = 0; j < src.cols; j++)
+        for(int col = kernel/2; col < temp.cols - kernel/2-1; col++)
         {
-            Num.at<uchar>(i,j) = pow(src.at<uchar>(i,j),P+1);
-            Den.at<uchar> (i,j) = pow(src.at<uchar>(i,j),P);
-        }
+
+        double den=0,num=0;
+          for(int i = -(kernel/2); i <= (kernel/2) ; i++)
+          {
+            for(int j = -(kernel/2) ; j <= (kernel/2); j++)
+            {
+                den += pow(temp.at<uchar>(row+i,col+j),P);
+                num += pow(temp.at<uchar>(row+i,col+j),P+1);
+                //cout <<"Row: "<<row+i << " " << "col: "<< col + j << endl;
+            }
+          }
+
+        //cout << num/den << endl;
+        double value = num/den;
+        dst.at<uchar>(row,col) = (uchar)value;
+      }
     }
-
-    Mat Appliedkernel = Mat(kernel,kernel,CV_8U,Scalar(1,1,1));
-    filter2D(Num,Num, src.depth(), Appliedkernel);
-    filter2D(Den,Den, src.depth(), Appliedkernel);
-
-    Mat output = Num/Den;
-
-
-    return output;
+    cout << "done " << endl;
+    dst.convertTo(dst,CV_8U);
 }
-

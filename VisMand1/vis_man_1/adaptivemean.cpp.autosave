@@ -1,0 +1,23 @@
+#include "adaptivemean.h"
+
+Mat AdaptiveMean(Mat src, int kernel)
+{
+    Mat output = src.clone();
+
+    for(int x = 0; x < src.rows; x++)
+    {
+        for(int y = 0; y < src.cols; y++)
+        {
+            for(int subX = 0; subX < kernel; subX++)
+            {
+                for(int subY = 0; subY < kernel ; subY++)                
+                {                    
+                    
+                }
+            }
+        }
+    }
+
+    return output;
+}
+

@@ -46,7 +46,7 @@ string getImgType(int imgTypeInt)
 
 int main() {
 	Mat image; 
-    image = imread("lena.bmp",CV_LOAD_IMAGE_GRAYSCALE);
+    image = imread("/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/img/Image1.png",CV_LOAD_IMAGE_GRAYSCALE);
     if(image.data < 0)
     {
         cout << "Not loaded" << endl;

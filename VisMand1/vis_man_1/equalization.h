@@ -7,6 +7,6 @@
 using namespace std;
 using namespace cv;
 
-void eql(const std::string& filename, const std::string& path, const std::string& saveas);
+Mat eql(Mat img, Mat dst);
 
 #endif // EQUALIZATION_H

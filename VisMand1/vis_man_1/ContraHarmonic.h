@@ -7,7 +7,7 @@
 using namespace cv;
 using namespace std;
 
-Mat ContraHarmonic(Mat src, int kernel, double P);
+void ContraHarmonic(Mat src,Mat dst,  int kernel, double P);
 
 
 
