@@ -29,7 +29,7 @@ void ContraHarmonic(Mat src, Mat dst, int kernel, double P)
       }
     }
     cout << "done " << endl;
-    dst111.convertTo(dst,CV_8U);
-    imshow("hey",dst);
+    dst.convertTo(dst111,CV_8U);
+    imshow("hey",dst111);
     waitKey();
 }
