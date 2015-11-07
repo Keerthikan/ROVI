@@ -56,10 +56,10 @@ int main()
     string img1 = "/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/img/Image1.png";
     string img2 = "/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/img/Image4_1.png";
 
-    namedWindow("final",WINDOW_NORMAL);
-		//namedWindow("das",WINDOW_NORMAL);
+    //namedWindow("final",WINDOW_NORMAL);
+		namedWindow("das",WINDOW_NORMAL);
     //namedWindow("init",WINDOW_NORMAL);
-    namedWindow("Original", WINDOW_NORMAL);
+    //namedWindow("Original", WINDOW_NORMAL);
 
     Mat orig = imread(original,CV_LOAD_IMAGE_GRAYSCALE);
     Mat src = imread(lena,CV_LOAD_IMAGE_GRAYSCALE);
@@ -67,6 +67,7 @@ int main()
 		Mat orig_crop;
     Mat dst = src.clone();
     Mat_<float> src4_2 = imread(img2, CV_LOAD_IMAGE_GRAYSCALE);
+		Mat_<float> output;
     //---------------------------------------------------------------//
 		cout << src.type() << endl;
 		if (src.type() == CV_8U)
@@ -86,8 +87,8 @@ int main()
     //bilateralFilter ( dst, dst, 15, 80, 80 );
     //blur(dst,dst,Size(11,11));
     //mean(dst,dst);
-    ContraHarmonic(src,dst,3,2);
-    cout << "converted" << endl;
+    //ContraHarmonic(src,dst,3,2);
+    //cout << "converted" << endl;
     //imshow("init", src);
     //imshow("final", src_crop);
     //imshow("Original",orig_crop);
@@ -96,7 +97,9 @@ int main()
     //-------------------------------------------------------------//
 
     //fft2(src4_2);
-		//imshow("final", dst);
+		//applyFilter(src4_2, output);
+		run(img2,true);
+		//imshow("das", output);
 		//imshow("src", src);
 		//imshow("Original",orig);
     //run(img2,0);

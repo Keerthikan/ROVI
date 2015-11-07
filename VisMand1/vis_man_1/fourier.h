@@ -15,7 +15,8 @@ using namespace std;
 
 //void fft(Mat_<float> src);
 void fft2(Mat_<float> src);
-
+void applyFilter(Mat_<float> src, Mat_<float> output);
+void run(const std::string& filename, bool highpass);
 
 
 #endif // FOURIER_H
