@@ -30,7 +30,7 @@ Mat calcHistogram(Mat dst){
       {
           line( histImage, Point( bin_w*(i-1), hist_h - cvRound(hist1.at<float>(i-1)) ) ,
                            Point( bin_w*(i), hist_h - cvRound(hist1.at<float>(i)) ),
-                           Scalar( 0, 0, 255), 2, 8, 0  );
+                           Scalar( 0, 0, 255), 3, 8, 0  );
       }
 
       /// Display
