@@ -50,13 +50,17 @@ SOURCES       = ../vis_man_1/main.cpp \
 		../vis_man_1/equalization.cpp \
 		../vis_man_1/calchistogram.cpp \
 		../vis_man_1/ContraHarmonic.cpp \
-		../vis_man_1/fourier.cpp 
+		../vis_man_1/fourier.cpp \
+		../vis_man_1/notch.cpp \
+		../vis_man_1/eq_kid.cpp 
 OBJECTS       = main.o \
 		histogram.o \
 		equalization.o \
 		calchistogram.o \
 		ContraHarmonic.o \
-		fourier.o
+		fourier.o \
+		notch.o \
+		eq_kid.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/shell-unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -294,7 +298,9 @@ compiler_clean:
 main.o: ../vis_man_1/main.cpp ../vis_man_1/histogram.h \
 		../vis_man_1/equalization.h \
 		../vis_man_1/calchistogram.h \
-		../vis_man_1/ContraHarmonic.h
+		../vis_man_1/ContraHarmonic.h \
+		../vis_man_1/fourier.h \
+		../vis_man_1/notch.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../vis_man_1/main.cpp
 
 histogram.o: ../vis_man_1/histogram.cpp ../vis_man_1/histogram.h
@@ -311,6 +317,12 @@ ContraHarmonic.o: ../vis_man_1/ContraHarmonic.cpp ../vis_man_1/ContraHarmonic.h
 
 fourier.o: ../vis_man_1/fourier.cpp ../vis_man_1/fourier.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o fourier.o ../vis_man_1/fourier.cpp
+
+notch.o: ../vis_man_1/notch.cpp ../vis_man_1/notch.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o notch.o ../vis_man_1/notch.cpp
+
+eq_kid.o: ../vis_man_1/eq_kid.cpp ../vis_man_1/eq_kid.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o eq_kid.o ../vis_man_1/eq_kid.cpp
 
 ####### Install
 
