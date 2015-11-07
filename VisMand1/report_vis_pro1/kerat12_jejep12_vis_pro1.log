@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.5.1)  7 NOV 2015 16:35
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.5.1)  7 NOV 2015 16:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -835,7 +835,14 @@ File: tikzlibraryfadings.code.tex 2009/11/15 v2.10 (rcs-revision 1.2)
 (/usr/local/texlive/2013/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings
 .code.tex
 File: pgflibraryfadings.code.tex 2008/02/07 v2.10 (rcs-revision 1.3)
-))) (./kerat12_jejep12_vis_pro1.aux)
+))) (./kerat12_jejep12_vis_pro1.aux
+
+LaTeX Warning: Label `fig:img1_src' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:img1_src' multiply defined.
+
+)
 \openout1 = `kerat12_jejep12_vis_pro1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 93.
@@ -852,8 +859,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 93.
 LaTeX Font Info:    ... okay on input line 93.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 93.
 LaTeX Font Info:    ... okay on input line 93.
-
-(/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii
+ (/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count178
 \scratchdimen=\dimen194
@@ -976,23 +982,56 @@ File: img1/src_hist.png Graphic file (type png)
  <use img1/src_hist.png>
 Package pdftex.def Info: img1/src_hist.png used on input line 11.
 (pdftex.def)             Requested size: 209.51033pt x 163.67873pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 20.
- [3 <./img1/Image1.png (PNG copy)> <./img1/src_hist.png (PNG copy)>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 20.
+File: img1/Image1.png Graphic file (type png)
+
+<use img1/Image1.png>
+Package pdftex.def Info: img1/Image1.png used on input line 23.
+(pdftex.def)             Requested size: 126.83586pt x 192.71823pt.
+
+<img1/img_1_medianBlur_3.png, id=62, 1529.715pt x 2324.685pt>
+File: img1/img_1_medianBlur_3.png Graphic file (type png)
+
+<use img1/img_1_medianBlur_3.png>
+Package pdftex.def Info: img1/img_1_medianBlur_3.png used on input line 28.
+(pdftex.def)             Requested size: 126.83586pt x 192.71823pt.
+
+Underfull \hbox (badness 1205) in paragraph at lines 29--29
+[][]\OT1/cmr/m/sc/10 (b) []|\OT1/cmr/m/sc/9 Im-age1 fil-tered with
+ []
+
+<img1/img_1_medianBlur_9.png, id=63, 1529.715pt x 2324.685pt>
+File: img1/img_1_medianBlur_9.png Graphic file (type png)
+
+<use img1/img_1_medianBlur_9.png>
+Package pdftex.def Info: img1/img_1_medianBlur_9.png used on input line 33.
+(pdftex.def)             Requested size: 126.83586pt x 192.71823pt.
+
+Underfull \hbox (badness 1168) in paragraph at lines 34--34
+[][]\OT1/cmr/m/sc/10 (c) []|\OT1/cmr/m/sc/9 Im-age1 fil-tered with
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 41.
+[3 <./img1/Image1.png (PNG copy)> <./img1/src_hist.png (PNG copy)> <./img1/img_
+1_medianBlur_3.png (PNG copy)> <./img1/img_1_medianBlur_9.png (PNG copy)>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 41.
 
 (./kerat12_jejep12_vis_pro1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 20.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 20.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 41.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 41.
 Package rerunfilecheck Info: File `kerat12_jejep12_vis_pro1.out' has not change
 d.
 (rerunfilecheck)             Checksum: BC8C4BA75441599BCC56BD4283D5B964;89.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 20.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 41.
  ) ) 
 Here is how much of TeX's memory you used:
- 20247 strings out of 493315
- 378788 string characters out of 6137905
- 519293 words of memory out of 5000000
- 23295 multiletter control sequences out of 15000+600000
+ 20263 strings out of 493315
+ 379203 string characters out of 6137905
+ 520708 words of memory out of 5000000
+ 23308 multiletter control sequences out of 15000+600000
  8165 words of font info for 29 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  63i,8n,97p,443b,611s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1003,10 +1042,10 @@ b></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></
 usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
 sr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on kerat12_jejep12_vis_pro1.pdf (4 pages, 4775488 bytes).
+Output written on kerat12_jejep12_vis_pro1.pdf (4 pages, 7507036 bytes).
 PDF statistics:
- 94 PDF objects out of 1000 (max. 8388607)
- 60 compressed objects within 1 object stream
- 9 named destinations out of 1000 (max. 500000)
- 140 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 98 PDF objects out of 1000 (max. 8388607)
+ 62 compressed objects within 1 object stream
+ 10 named destinations out of 1000 (max. 500000)
+ 150 words of extra memory for PDF output out of 10000 (max. 10000000)
 
