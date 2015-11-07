@@ -54,10 +54,10 @@ int main()
     string lena = "/home/student/Desktop/lena_face.bmp";
     string original = "/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/img/ImageOrig.png";
     string img1 = "/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/img/Image1.png";
-    string img2 = "/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/img/Image4_1.png";
+    string img2 = "/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/img/Image4_2.png";
 
     //namedWindow("final",WINDOW_NORMAL);
-		namedWindow("das",WINDOW_NORMAL);
+		//namedWindow("das",WINDOW_NORMAL);
     //namedWindow("init",WINDOW_NORMAL);
     //namedWindow("Original", WINDOW_NORMAL);
 
@@ -98,7 +98,8 @@ int main()
 
     //fft2(src4_2);
 		//applyFilter(src4_2, output);
-		run(img2,true);
+		applyFilter(src4_2,output);
+		fft2(output);
 		//imshow("das", output);
 		//imshow("src", src);
 		//imshow("Original",orig);

@@ -21,6 +21,32 @@ void dftshift(ImgT& img) {
 	tmp.copyTo(bottomLeft);
 }
 
+Mat create_spectrum_magnitude_display(Mat& complexImg, bool rearrange)
+{
+    Mat planes[2];
+
+    // compute magnitude spectrum (N.B. for display)
+    // compute log(1 + sqrt(Re(DFT(img))**2 + Im(DFT(img))**2))
+
+    split(complexImg, planes);
+    magnitude(planes[0], planes[1], planes[0]);
+
+    Mat mag = (planes[0]).clone();
+    mag += Scalar::all(1);
+    log(mag, mag);
+
+    if (rearrange)
+    {
+        // re-arrange the quaderants
+        dftshift(mag);
+    }
+
+    normalize(mag, mag, 0, 1, CV_MINMAX);
+
+    return mag;
+
+}
+
 void run(const std::string& filename, bool highpass) {
     // A gray image
     cv::Mat_<float> img = cv::imread(filename, CV_LOAD_IMAGE_GRAYSCALE);
@@ -59,9 +85,9 @@ void run(const std::string& filename, bool highpass) {
 
    if(highpass) {
       // High-pass filter: remove the low frequency parts in the middle of the spectrum
-      const int sizef = 50;
+      const int sizef = 500;
       magnitude(cv::Rect(magnitude.cols/2-sizef/2, magnitude.rows/2-sizef/2, sizef, sizef)) = 0.0f;
-
+			magnitude(cv::Rect(magnitude.cols/2 -50, magnitude.rows/2 - 50, 50, 50)) = 400.0f;
       // Take logarithm of modified magnitude
       magnitudel = magnitude + 1.0f;
       cv::log(magnitudel, magnitudel);
@@ -125,6 +151,32 @@ cv::Mat BHPF(double d0, double n, int wy, int wx, int cx, int cy)
     return hpf;
 }
 
+void create_butterworth_lowpass_filter(Mat &dft_Filter, int D, int n)
+{
+	Mat tmp = Mat(dft_Filter.rows, dft_Filter.cols, CV_32F);
+
+	Point centre = Point(dft_Filter.rows / 2, dft_Filter.cols / 2);
+	double radius;
+
+	// based on the forumla in the IP notes (p. 130 of 2009/10 version)
+	// see also HIPR2 on-line
+
+	for(int i = 0; i < dft_Filter.rows; i++)
+	{
+		for(int j = 0; j < dft_Filter.cols; j++)
+		{
+			radius = (double) sqrt(pow((i - centre.x), 2.0) + pow((double) (j - centre.y), 2.0));
+			tmp.at<float>(i,j) = (float)
+						( 1 / (1 + pow((double) (radius /  D), (double) (2 * n))));
+		}
+	}
+
+    Mat toMerge[] = {tmp, tmp};
+	merge(toMerge, 2, dft_Filter);
+}
+
+
+
 
 
 void fft2(Mat_<float> src)
@@ -180,10 +232,15 @@ void applyFilter(Mat_<float> src, Mat_<float> output)
 	dftshift(img_dft);
 	cout << "helo " << endl;
 
-  cv::Mat hpf = BHPF(3000, 4, wy, wx, cx, cy);
-  cv::mulSpectrums(hpf, img_dft, img_dft, cv::DFT_ROWS);
+  //cv::Mat hpf = BHPF(3000, 4, wy, wx, cx, cy);
+	Mat filter = src.clone();
+	create_butterworth_lowpass_filter(filter,300,7);
+	//cv::mulSpectrums(hpf, img_dft, img_dft, cv::DFT_ROWS);
+	cv::mulSpectrums(img_dft, filter, img_dft, cv::DFT_ROWS);
 
 	dftshift(img_dft);
+
+	Mat mag = create_spectrum_magnitude_display(img_dft, true);
 
   cv::idft(img_dft, img_dft); //the result is a 2 channel image
 	split(img_dft, imgs);
@@ -191,13 +248,18 @@ void applyFilter(Mat_<float> src, Mat_<float> output)
 
 	cv::Mat_<float> croppedOutput(output,cv::Rect(0,0,wxOrig,wyOrig));
 
-	output = croppedOutput;
-
-	namedWindow("High-pass filtered input",WINDOW_NORMAL);
+	split(filter, imgs);
+	Mat filterOutput;
+	normalize(imgs[0],filterOutput,0,1,CV_MINMAX);
+	namedWindow("Low-pass filtered input",WINDOW_NORMAL);
 	namedWindow("Input",WINDOW_NORMAL);
+	namedWindow("filter",WINDOW_NORMAL);
+	namedWindow("output", WINDOW_NORMAL);
 	cv::imshow("Input", src);
-	cv::imshow("High-pass filtered input", croppedOutput);
-	imwrite("/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/output/out.jpg",croppedOutput);
+	cv::imshow("Low-pass filtered input", croppedOutput);
+	cv::imshow("filter", filterOutput);
+	cv::imshow("output", output);
+	imwrite("/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/output/outm.jpg",croppedOutput);
 	cout << "lol" << endl;
 	cv::waitKey(0);
 
