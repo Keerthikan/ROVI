@@ -87,7 +87,7 @@ int main()
 		// {
 		// 	for(int p = 1;  p < 10 ; p++)
 		// 	{
-		// 	ContraHarmonic(src,dst,kernel,p);
+		 	ContraHarmonic(src,dst,5,1);
 		// 	cout << " kernel: " << kernel << " Q: " << p << endl;
 		// 	imwrite("/home/student/ROVI/VisMand1/report_vis_pro1/img1/img_1_gaus_"+to_string(kernel)+"_"+to_string(p)+".png",dst);
 		// 	//namedWindow("final",0);
@@ -99,9 +99,9 @@ int main()
 		// }
 		medianBlur(dst,dst,3);
 		//imshow("final", dst);
-		calcHistogram(crop_rect(src));
+		calcHistogram(crop_rect(dst));
   	//medianBlur(dst,dst,-1);
-		imwrite("/home/student/ROVI/VisMand1/report_vis_pro1/img1/img_1_medianBlur_3.png",dst);
+		imwrite("/home/student/ROVI/VisMand1/report_vis_pro1/img1/img_1_contraharmonic5_1_medianBlur_3.png",dst);
 
     //bilateralFilter ( dst, dst, 15, 80, 80 );
     //blur(dst,dst,Size(11,11));
