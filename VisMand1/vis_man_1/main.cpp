@@ -97,10 +97,11 @@ int main()
 		// 	//destroyWindow("final");
 		// 	}
 		// }
-		// medianBlur(dst,dst,9);
+		medianBlur(dst,dst,3);
 		//imshow("final", dst);
 		calcHistogram(crop_rect(src));
   	//medianBlur(dst,dst,-1);
+		imwrite("/home/student/ROVI/VisMand1/report_vis_pro1/img1/img_1_medianBlur_3.png",dst);
 
     //bilateralFilter ( dst, dst, 15, 80, 80 );
     //blur(dst,dst,Size(11,11));
