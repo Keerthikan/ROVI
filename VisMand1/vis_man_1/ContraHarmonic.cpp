@@ -19,39 +19,11 @@ void ContraHarmonic(Mat src, Mat dst, int kernel, double P)
             {
                 den += pow(temp.at<uchar>(row+i,col+j),P);
                 num += pow(temp.at<uchar>(row+i,col+j),P+1);
-                //cout <<"Row: "<<row+i << " " << "col: "<< col + j << endl;
             }
           }
 
-        //cout << num/den << endl;
         value = num/den;
-        //cout << "set" << endl;
-        // if (isnan(value))
-        // {
-        //   //cout << num << " " << den << endl;
-        //
-        //   if(isinf(num) && isinf(den))
-        //   {
-        //     dst.at<double>(row,col) = 1;
-        //   }
-        //
-        //   else if (isinf(num))
-        //   {
-        //     dst.at<double>(row,col) = den;
-        //   }
-        //   else if (isinf(den))
-        //   {
-        //     dst.at<double>(row,col) = num;
-        //   }
-        //
-        // }
-        // else
-        // {
-        //   //cout << "was not nan" << endl;
-           dst.at<uchar>(row,col) = value;
-        // }
-      //  namedWindow("ad",WINDOW_NORMAL);
-      //  imshow("ad",dst);
+        dst.at<uchar>(row,col) = value;
       }
     }
     cout << "ada" << endl;

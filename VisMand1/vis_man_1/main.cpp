@@ -87,7 +87,7 @@ int main()
     //bilateralFilter ( dst, dst, 15, 80, 80 );
     //blur(dst,dst,Size(11,11));
     //mean(dst,dst);
-    ContraHarmonic(src,dst,3,5);
+    ContraHarmonic(src,dst,3,11);
     //cout << "converted" << endl;
     imshow("init", src);
     //imshow("final", dst);
