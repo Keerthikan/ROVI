@@ -25,11 +25,38 @@ void ContraHarmonic(Mat src, Mat dst, int kernel, double P)
 
         //cout << num/den << endl;
         double value = num/den;
-        dst.at<double>(row,col) = value;
+        if (isnan(value))
+        {
+          cout << num << " " << den << endl;
+
+          if(isinf(num) && isinf(den))
+          {
+            dst.at<double>(row,col) = 1;
+          }
+
+          else if (isinf(num))
+          {
+            dst.at<double>(row,col) = den;
+          }
+          else if (isinf(den))
+          {
+            dst.at<double>(row,col) = num;
+          }
+
+        }
+        else
+        {
+          //cout << "was not nan" << endl;
+          dst.at<double>(row,col) = value;
+        }
+      //  namedWindow("ad",WINDOW_NORMAL);
+      //  imshow("ad",dst);
       }
     }
-    cout << "done " << endl;
+    cout << "ada" << endl;
     dst.convertTo(dst111,CV_8U);
+    namedWindow("hey",WINDOW_NORMAL);
     imshow("hey",dst111);
+    cout << "done " << endl;
     waitKey();
 }

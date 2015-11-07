@@ -259,7 +259,9 @@ void applyFilter(Mat_<float> src, Mat_<float> output)
 	cv::imshow("Low-pass filtered input", croppedOutput);
 	cv::imshow("filter", filterOutput);
 	cv::imshow("output", output);
-	imwrite("/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/output/outm.jpg",croppedOutput);
+	cv::FileStorage fs("/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/output/outm.yml",cv::FileStorage::WRITE);
+	//imwrite("/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/output/outm.png",croppedOutput);
+	fs <<"ImageId"<< croppedOutput;
 	cout << "lol" << endl;
 	cv::waitKey(0);
 

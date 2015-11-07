@@ -55,14 +55,14 @@ int main()
     string original = "/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/img/ImageOrig.png";
     string img1 = "/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/img/Image1.png";
     string img2 = "/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/img/Image4_2.png";
-
+		string outoutS = "/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/output/outm.yml";
     //namedWindow("final",WINDOW_NORMAL);
 		//namedWindow("das",WINDOW_NORMAL);
-    //namedWindow("init",WINDOW_NORMAL);
+    namedWindow("init",WINDOW_NORMAL);
     //namedWindow("Original", WINDOW_NORMAL);
 
     Mat orig = imread(original,CV_LOAD_IMAGE_GRAYSCALE);
-    Mat src = imread(lena,CV_LOAD_IMAGE_GRAYSCALE);
+    Mat src = imread(img1,CV_LOAD_IMAGE_GRAYSCALE);
 		Mat src_crop;
 		Mat orig_crop;
     Mat dst = src.clone();
@@ -87,10 +87,10 @@ int main()
     //bilateralFilter ( dst, dst, 15, 80, 80 );
     //blur(dst,dst,Size(11,11));
     //mean(dst,dst);
-    //ContraHarmonic(src,dst,3,2);
+    ContraHarmonic(src,dst,3,2);
     //cout << "converted" << endl;
-    //imshow("init", src);
-    //imshow("final", src_crop);
+    imshow("init", src);
+    //imshow("final", dst);
     //imshow("Original",orig_crop);
     // calcHistogram(dst);
 
@@ -98,12 +98,15 @@ int main()
 
     //fft2(src4_2);
 		//applyFilter(src4_2, output);
-		applyFilter(src4_2,output);
-		fft2(output);
+		//applyFilter(src4_2,output);
+		//Mat_<float> Test;
+		//cv::FileStorage fs(outoutS,cv::FileStorage::READ);
+		//fs["ImageId"]>>Test;
+		//fft2(Test);
 		//imshow("das", output);
 		//imshow("src", src);
 		//imshow("Original",orig);
     //run(img2,0);
-    //waitKey(0);
+    waitKey(0);
     return 0;
 }
