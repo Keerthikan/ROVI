@@ -12,6 +12,7 @@
 #include "ContraHarmonic.h"
 #include "fourier.h"
 #include "notch.h"
+#include <string>
 
 #define RECT_POS_X 1075
 #define RECT_POS_Y 1400
@@ -56,7 +57,7 @@ int main()
     string img1 = "/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/img/Image1.png";
     string img2 = "/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/img/Image4_2.png";
 		string outoutS = "/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/output/outm.yml";
-    namedWindow("final",WINDOW_NORMAL);
+
 		//namedWindow("das",WINDOW_NORMAL);
     //namedWindow("init",WINDOW_NORMAL);
     //namedWindow("Original", WINDOW_NORMAL);
@@ -82,9 +83,22 @@ int main()
    	//equalizeHist( dst, dst );
 		//intensityIncrease(dst,);
 		//imshow("das", dst);
-		ContraHarmonic(src,dst,3,4);
+		for(int kernel = 3; kernel <= 11; kernel += 2)
+		{
+			for(int p = 1;  p < 10 ; p++)
+			{
+			ContraHarmonic(src,dst,kernel,p);
+			cout << " kernel: " << kernel << " Q: " << p << endl;
+			imwrite("/home/student/ROVI/VisMand1/report_vis_pro1/img1/img_1_gaus_"+to_string(kernel)+"_"+to_string(p)+".png",dst);
+			//namedWindow("final",0);
+			//resizeWindow("final",450,700);
+			//imshow("final", dst);
+ 			//waitKey(0);
+			//destroyWindow("final");
+			}
+		}
 		medianBlur(dst,dst,9);
-		imshow("final", dst);
+		//imshow("final", dst);
 		calcHistogram(crop_rect(dst));
   	//medianBlur(dst,dst,-1);
 
