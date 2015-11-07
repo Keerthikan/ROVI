@@ -83,23 +83,23 @@ int main()
    	//equalizeHist( dst, dst );
 		//intensityIncrease(dst,);
 		//imshow("das", dst);
-		for(int kernel = 3; kernel <= 11; kernel += 2)
-		{
-			for(int p = 1;  p < 10 ; p++)
-			{
-			ContraHarmonic(src,dst,kernel,p);
-			cout << " kernel: " << kernel << " Q: " << p << endl;
-			imwrite("/home/student/ROVI/VisMand1/report_vis_pro1/img1/img_1_gaus_"+to_string(kernel)+"_"+to_string(p)+".png",dst);
-			//namedWindow("final",0);
-			//resizeWindow("final",450,700);
-			//imshow("final", dst);
- 			//waitKey(0);
-			//destroyWindow("final");
-			}
-		}
-		medianBlur(dst,dst,9);
+		// for(int kernel = 3; kernel <= 11; kernel += 2)
+		// {
+		// 	for(int p = 1;  p < 10 ; p++)
+		// 	{
+		// 	ContraHarmonic(src,dst,kernel,p);
+		// 	cout << " kernel: " << kernel << " Q: " << p << endl;
+		// 	imwrite("/home/student/ROVI/VisMand1/report_vis_pro1/img1/img_1_gaus_"+to_string(kernel)+"_"+to_string(p)+".png",dst);
+		// 	//namedWindow("final",0);
+		// 	//resizeWindow("final",450,700);
+		// 	//imshow("final", dst);
+ 	// 		//waitKey(0);
+		// 	//destroyWindow("final");
+		// 	}
+		// }
+		// medianBlur(dst,dst,9);
 		//imshow("final", dst);
-		calcHistogram(crop_rect(dst));
+		calcHistogram(crop_rect(src));
   	//medianBlur(dst,dst,-1);
 
     //bilateralFilter ( dst, dst, 15, 80, 80 );

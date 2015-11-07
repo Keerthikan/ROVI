@@ -30,11 +30,12 @@ Mat calcHistogram(Mat dst){
       {
           line( histImage, Point( bin_w*(i-1), hist_h - cvRound(hist1.at<float>(i-1)) ) ,
                            Point( bin_w*(i), hist_h - cvRound(hist1.at<float>(i)) ),
-                           Scalar( 255, 0, 0), 2, 8, 0  );
+                           Scalar( 0, 0, 255), 2, 8, 0  );
       }
 
       /// Display
       namedWindow("calcHist Demo", CV_WINDOW_AUTOSIZE );
       imshow("calcHist Demo", histImage );
+      imwrite("/home/student/ROVI/VisMand1/report_vis_pro1/img1/src_hist.png",histImage);
       return(hist);
 }
