@@ -27,9 +27,6 @@ void ContraHarmonic(Mat src, Mat dst, int kernel, double P)
       }
     }
     cout << "ada" << endl;
-    dst.convertTo(dst111,CV_8U);
-    namedWindow("hey",WINDOW_NORMAL);
-    imshow("hey",dst111);
+    dst.convertTo(dst,CV_8U);
     cout << "done " << endl;
-    waitKey();
 }

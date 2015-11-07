@@ -56,9 +56,9 @@ int main()
     string img1 = "/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/img/Image1.png";
     string img2 = "/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/img/Image4_2.png";
 		string outoutS = "/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/output/outm.yml";
-    //namedWindow("final",WINDOW_NORMAL);
+    namedWindow("final",WINDOW_NORMAL);
 		//namedWindow("das",WINDOW_NORMAL);
-    namedWindow("init",WINDOW_NORMAL);
+    //namedWindow("init",WINDOW_NORMAL);
     //namedWindow("Original", WINDOW_NORMAL);
 
     Mat orig = imread(original,CV_LOAD_IMAGE_GRAYSCALE);
@@ -82,15 +82,16 @@ int main()
    	//equalizeHist( dst, dst );
 		//intensityIncrease(dst,);
 		//imshow("das", dst);
-  	//medianBlur(dst,dst,-111);
+		ContraHarmonic(src,dst,3,4);
+		medianBlur(dst,dst,9);
+		imshow("final", dst);
+		calcHistogram(crop_rect(dst));
+  	//medianBlur(dst,dst,-1);
 
     //bilateralFilter ( dst, dst, 15, 80, 80 );
     //blur(dst,dst,Size(11,11));
     //mean(dst,dst);
-    ContraHarmonic(src,dst,3,11);
     //cout << "converted" << endl;
-    imshow("init", src);
-    //imshow("final", dst);
     //imshow("Original",orig_crop);
     // calcHistogram(dst);
 
@@ -99,6 +100,7 @@ int main()
     //fft2(src4_2);
 		//applyFilter(src4_2, output);
 		//applyFilter(src4_2,output);
+		//imshow("init", src4_2);
 		//Mat_<float> Test;
 		//cv::FileStorage fs(outoutS,cv::FileStorage::READ);
 		//fs["ImageId"]>>Test;
