@@ -25,40 +25,115 @@ using namespace cv;
 Mat crop_rect(Mat original)
 {
 	Rect ROI = Rect(RECT_POS_X,RECT_POS_Y,RECT_SIZE,RECT_SIZE);
-	cout << "csdc" << endl;
 	Mat crop  = original(ROI);
 	return crop;
 }
 
-cv::Mat intensityIncrease(const cv::Mat &img, int amount, bool saturateCast=false){
+
+
+Mat increase_saturation(cv::Mat image, uchar inc)
+{
+	cv::Mat hsv;
+	cvtColor(image, hsv, CV_BGR2HSV);
+
+	for (int i = 0; i < hsv.rows; i++) {
+		/* code */
+		for (int j = 0; j < hsv.cols; j++) {
+				if(hsv.at<Vec3b>(i,j)[1] <= 255-inc)
+				{
+					hsv.at<Vec3b>(i,j)[1] += inc;
+				}
+				else
+				{
+					hsv.at<Vec3b>(i,j)[1] = 255;
+				}
+
+		}
+	}
+	cvtColor(hsv,hsv,CV_HSV2BGR);
+	return hsv;
+
+}
+
+Mat increase_value(cv::Mat image, uchar inc)
+{
+	cv::Mat hsv;
+	cvtColor(image, hsv, CV_BGR2HSV);
+
+	for (int i = 0; i < hsv.rows; i++) {
+		/* code */
+		for (int j = 0; j < hsv.cols; j++) {
+				if(hsv.at<Vec3b>(i,j)[2] <= 255-inc)
+				{
+					hsv.at<Vec3b>(i,j)[2] += inc;
+				}
+				else
+				{
+					hsv.at<Vec3b>(i,j)[2] = 255;
+				}
+
+		}
+	}
+	cvtColor(hsv,hsv,CV_HSV2BGR);
+	return hsv;
+
+}
+
+Mat intensityIncrease(const cv::Mat &img, int amount){
     cv::Mat imgCopy = img.clone();
 	int r = imgCopy.rows;
 	int c = imgCopy.cols;
-
-    // for all pixels
     for (int i=0; i<r; i++)
-	{
-        uchar* data= imgCopy.ptr<uchar>(i); // pointer to first column of row i
+		{
         for (int j=0; j<c; j++){
-            if(saturateCast) {
-                data[j] = cv::saturate_cast<uchar>(data[j] + amount);
-            }else {
-                data[j] = data[j] + amount;
-            }
+					int value = imgCopy.at<uchar>(i,j);
+          if (value + amount > 250 ) {
+					//		cout << "Max value" << endl;
+							imgCopy.at<uchar>(i,j) = value;
+          }
+					else
+					{
+					//		cout << "newValue: " << value   <<" " <<	imgCopy.at<uchar>(i,j) + amount
+// << endl;
+							imgCopy.at<uchar>(i,j) += amount;
+					}
         }
-	}
+		}
 	return imgCopy;
 }
 
+Mat intensityDecrease(const cv::Mat &img, int amount){
+    cv::Mat imgCopy = img.clone();
+	int r = imgCopy.rows;
+	int c = imgCopy.cols;
+    for (int i=0; i<r; i++)
+		{
+        for (int j=0; j<c; j++){
+					int value = imgCopy.at<uchar>(i,j);
+          if (value + amount < 0 ) {
+					//		cout << "Max value" << endl;
+							imgCopy.at<uchar>(i,j) = 0;
+          }
+					else
+					{
+					//		cout << "newValue: " << value   <<" " <<	imgCopy.at<uchar>(i,j) + amount
+// << endl;
+							imgCopy.at<uchar>(i,j) -= amount;
+					}
+        }
+		}
+	return imgCopy;
+}
 int main()
 {
     string lena = "/home/student/Desktop/lena_face.bmp";
     string original = "/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/img/ImageOrig.png";
     string img1 = "/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/img/Image1.png";
     string img2 = "/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/img/Image4_2.png";
+		string img3 = "/home/student/ROVI/VisMand1/report_vis_pro1/img1/img_1_contraharmonic5_1_medianBlur_3.png";
 		string outoutS = "/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/output/outm.yml";
 
-		//namedWindow("das",WINDOW_NORMAL);
+		//namedWindow("dat",WINDOW_NORMAL);
     //namedWindow("init",WINDOW_NORMAL);
     //namedWindow("Original", WINDOW_NORMAL);
 
@@ -87,22 +162,34 @@ int main()
 		// {
 		// 	for(int p = 1;  p < 10 ; p++)
 		// 	{
-		 	ContraHarmonic(src,dst,5,1);
+		//  	ContraHarmonic(src,dst,5,1);
+		// 	cvtColor(dst,dst,CV_GRAY2BGR);
+		// 	dst = increase_value(dst,30);
+		// 	dst = increase_saturation(dst, 100);
+		// 	cvtColor(dst,dst,CV_BGR2GRAY);
+		// //	equalizeHist(dst,dst);
+		// 	calcHistogram(crop_rect(dst));
+		// 	waitKey(0);
+		// 	calcHistogram(crop_rect(orig));
+		// 	waitKey(0);
+
 		// 	cout << " kernel: " << kernel << " Q: " << p << endl;
 		// 	imwrite("/home/student/ROVI/VisMand1/report_vis_pro1/img1/img_1_gaus_"+to_string(kernel)+"_"+to_string(p)+".png",dst);
-		// 	//namedWindow("final",0);
-		// 	//resizeWindow("final",450,700);
-		// 	//imshow("final", dst);
- 	// 		//waitKey(0);
+
+ 	  //	//waitKey(0);
 		// 	//destroyWindow("final");
 		// 	}
 		// }
-		medianBlur(dst,dst,3);
-		//imshow("final", dst);
-		calcHistogram(crop_rect(dst));
-  	//medianBlur(dst,dst,-1);
-		imwrite("/home/student/ROVI/VisMand1/report_vis_pro1/img1/img_1_contraharmonic5_1_medianBlur_3.png",dst);
-
+		//for(int i = 3; i < 10 ; i=2+i)
+		//{
+		//	medianBlur(dst,dst,i);
+			//imshow("final", dst);
+	//	namedWindow("final",0);
+		//	resizeWindow("final",450,700);
+		//	imshow("final", dst);
+  		//medianBlur(dst,dst,-1);
+			//imwrite("/home/student/ROVI/VisMand1/report_vis_pro1/img1/img_1_contraharmonic5_1_eqh.png",dst);
+		//}
     //bilateralFilter ( dst, dst, 15, 80, 80 );
     //blur(dst,dst,Size(11,11));
     //mean(dst,dst);
@@ -112,8 +199,11 @@ int main()
 
     //-------------------------------------------------------------//
 
-    //fft2(src4_2);
-		//applyFilter(src4_2, output);
+    fft2(src4_2);
+			/* code */
+				/* code */
+				applyFilter(src4_2, output, 300, 7);
+				fft2(output);
 		//applyFilter(src4_2,output);
 		//imshow("init", src4_2);
 		//Mat_<float> Test;

@@ -19,7 +19,7 @@ Mat calcHistogram(Mat dst){
       int hist_w = 512; int hist_h = 400;
       int bin_w = cvRound( (double) hist_w/histSize );
 
-      Mat histImage( hist_h, hist_w, CV_8UC3, Scalar( 0,0,0) );
+      Mat histImage( hist_h, hist_w, CV_8UC3, Scalar( 0,27,0) );
 
       /// Normalize the result to [ 0, histImage.rows ]
       normalize(hist, hist1, 0, histImage.rows, NORM_MINMAX, -1, Mat() );
@@ -30,12 +30,12 @@ Mat calcHistogram(Mat dst){
       {
           line( histImage, Point( bin_w*(i-1), hist_h - cvRound(hist1.at<float>(i-1)) ) ,
                            Point( bin_w*(i), hist_h - cvRound(hist1.at<float>(i)) ),
-                           Scalar( 0, 0, 255), 3, 8, 0  );
+                           Scalar( 255, 100, 255), 3, 8, 0  );
       }
 
       /// Display
       namedWindow("calcHist Demo", CV_WINDOW_AUTOSIZE );
       imshow("calcHist Demo", histImage );
-      imwrite("/home/student/ROVI/VisMand1/report_vis_pro1/img1/src_hist.png",histImage);
+      //imwrite("/home/student/ROVI/VisMand1/report_vis_pro1/img1/src_hist.png",histImage);
       return(hist);
 }

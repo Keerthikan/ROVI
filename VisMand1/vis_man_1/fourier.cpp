@@ -79,9 +79,6 @@ void create_butterworth_lowpass_filter(Mat &dft_Filter, int D, int n)
 	Point centre = Point(dft_Filter.rows / 2, dft_Filter.cols / 2);
 	double radius;
 
-	// based on the forumla in the IP notes (p. 130 of 2009/10 version)
-	// see also HIPR2 on-line
-
 	for(int i = 0; i < dft_Filter.rows; i++)
 	{
 		for(int j = 0; j < dft_Filter.cols; j++)
@@ -124,67 +121,92 @@ void fft2(Mat_<float> src)
 	normalize(magnitude,magnitude,0,1,CV_MINMAX);
 	namedWindow("img_dft",WINDOW_NORMAL);
 	imshow("img_dft",magnitude);
+	magnitude.convertTo(mgnitude,CV_8UC3,255.0);
+	cout << "converted" << endl;
+	imwrite("/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/output/imgssuft.png",magnitude);
 	waitKey(0);
 	cout << "out" << endl;
 }
 
 
-void applyFilter(Mat_<float> src, Mat_<float> output)
+void applyFilter(const Mat_<float> src, Mat_<float> output,int kernel , int order)
 {
-	int wxOrig = src.cols;
-  int wyOrig = src.rows;
+		Mat_<float> temp = src;
+		int wxOrig = src.cols;
+	  int wyOrig = src.rows;
 
-	int m = cv::getOptimalDFTSize(2*wyOrig);
-	int n = cv::getOptimalDFTSize(2*wxOrig);
+		int m = cv::getOptimalDFTSize(2*wyOrig);
+		int n = cv::getOptimalDFTSize(2*wxOrig);
 
-  copyMakeBorder(src, src, 0, m - wyOrig, 0, n - wxOrig, cv::BORDER_CONSTANT, cv::Scalar::all(0));
+	  copyMakeBorder(temp, temp, 0, m - wyOrig, 0, n - wxOrig, cv::BORDER_CONSTANT, cv::Scalar::all(0));
 
-	const int wx = src.cols, wy = src.rows;
-  const int cx = wx/2, cy = wy/2;
+		const int wx = temp.cols, wy = temp.rows;
+	  const int cx = wx/2, cy = wy/2;
 
-	std::cout << wxOrig << " " << wyOrig << std::endl;
-	std::cout << wx << " " << wy << std::endl;
-	std::cout << cx << " " << cy << std::endl;
+		std::cout << wxOrig << " " << wyOrig << std::endl;
+		std::cout << wx << " " << wy << std::endl;
+		std::cout << cx << " " << cy << std::endl;
 
-	cv::Mat_<float> imgs[] = {src.clone(), cv::Mat_<float>::zeros(wy, wx)};
-  cv::Mat_<cv::Vec2f> img_dft;
-  cv::merge(imgs, 2, img_dft);
-  cv::dft(img_dft, img_dft);
+		cv::Mat_<float> imgs[] = {temp.clone(), cv::Mat_<float>::zeros(wy, wx)};
+	  cv::Mat_<cv::Vec2f> img_dft;
+	  cv::merge(imgs, 2, img_dft);
+	  cv::dft(img_dft, img_dft);
 
-	dftshift(img_dft);
-	cout << "helo " << endl;
+		dftshift(img_dft);
+		cout << "helo " << endl;
 
-  //cv::Mat hpf = BHPF(3000, 4, wy, wx, cx, cy);
-	Mat filter = src.clone();
-	create_butterworth_lowpass_filter(filter,300,7);
-	//cv::mulSpectrums(hpf, img_dft, img_dft, cv::DFT_ROWS);
-	cv::mulSpectrums(img_dft, filter, img_dft, cv::DFT_ROWS);
+	  //cv::Mat hpf = BHPF(3000, 4, wy, wx, cx, cy);
+		Mat filter = temp.clone();
+		create_butterworth_lowpass_filter(filter,kernel,order);
+		//cv::mulSpectrums(hpf, img_dft, img_dft, cv::DFT_ROWS);
+		cv::mulSpectrums(img_dft, filter, img_dft, cv::DFT_ROWS);
 
-	dftshift(img_dft);
+		dftshift(img_dft);
+		cout << "helo" << endl;
+		Mat mag = create_spectrum_magnitude_display(img_dft, true);
 
-	Mat mag = create_spectrum_magnitude_display(img_dft, true);
+	  cv::idft(img_dft, img_dft); //the result is a 2 channel image
+		split(img_dft, imgs);
+		normalize(imgs[0], output, 0, 1, CV_MINMAX);
 
-  cv::idft(img_dft, img_dft); //the result is a 2 channel image
-	split(img_dft, imgs);
-	normalize(imgs[0], output, 0, 1, CV_MINMAX);
+		cv::Mat_<float> croppedOutput(output,cv::Rect(0,0,wxOrig,wyOrig));
+		cout << "helo" << endl;
+		split(filter, imgs);
+		Mat filterOutput;
+		normalize(imgs[0],filterOutput,0,1,CV_MINMAX);
+		Mat  input = src.clone();
 
-	cv::Mat_<float> croppedOutput(output,cv::Rect(0,0,wxOrig,wyOrig));
+		normalize(input,input, 0,1,CV_MINMAX);
+		namedWindow("Low-pass filtered input",0);
+		resizeWindow("Low-pass filtered input",450,700);
+		moveWindow("Low-pass filtered input", 100,100);
 
-	split(filter, imgs);
-	Mat filterOutput;
-	normalize(imgs[0],filterOutput,0,1,CV_MINMAX);
-	namedWindow("Low-pass filtered input",WINDOW_NORMAL);
-	namedWindow("Input",WINDOW_NORMAL);
-	namedWindow("filter",WINDOW_NORMAL);
-	namedWindow("output", WINDOW_NORMAL);
-	cv::imshow("Input", src);
-	cv::imshow("Low-pass filtered input", croppedOutput);
-	cv::imshow("filter", filterOutput);
-	cv::imshow("output", output);
-	cv::FileStorage fs("/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/output/outm.yml",cv::FileStorage::WRITE);
-	//imwrite("/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/output/outm.png",croppedOutput);
-	fs <<"ImageId"<< croppedOutput;
-	cout << "lol" << endl;
-	cv::waitKey(0);
+		namedWindow("Input",WINDOW_NORMAL);
+
+		namedWindow("filter",0);
+		resizeWindow("filter",450,700);
+		moveWindow("filter", 550,100);
+
+		namedWindow("output", WINDOW_NORMAL);
+
+		cv::imshow("Input", input);
+
+		cv::imshow("Low-pass filtered input", croppedOutput);
+
+		cv::imshow("filter", filterOutput);
+
+		cv::imshow("output", output);
+		cout << "fft of output" << endl;
+		//fft2(output);
+		//cout << "order: " << order << " cutFrequency: " << cut << endl;
+		imwrite("/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/output/imgssut.png", input);
+		//imwrite("/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/output/outm.png",output);
+		cv::FileStorage fs("/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/output/outm.yml",cv::FileStorage::WRITE);
+		//imwrite("/home/student/ROVI/VisMand1/build-vis_man_1-Desktop-Debug/output/outm.png",croppedOutput);
+		fs <<"ImageId"<< input;
+		//cout << "lol" << endl;
+		cv::waitKey(0);
+		cout << "Destroy" << endl;
+		destroyAllWindows();
 
 }
