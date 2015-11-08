@@ -33,5 +33,121 @@ D(u,v) = [(u-P/2)^2 + (v-Q/2)^2]^{\frac{1}{2}}
 P and Q is the padded size of the rectangle. \\
 
 
-The cutoff frequency can easily by found, by computing the distance between the origin and the corresponding frequency component. 
+The cutoff frequency can easily by found, by computing the distance between the origin and the corresponding frequency component. The origin i as the pixel position $(1536 ,2408)$, and one of the undesired frequency component lies as pixel position $(2336,2400)$ \\
+
+
+This distance is computed to be 800, which means that $D_0$ below 800, should be able to filter out the frequency components causing the stripes. \\
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.16\textwidth}
+        \includegraphics[width=\textwidth]{img2/src.png}
+        \caption{The original image}
+        \label{fig:img2_src}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.16\textwidth}
+        \includegraphics[width=\textwidth]{img2/hist.png}
+        \caption{Histogram of the original image}
+        \label{fig:img2_hist}
+    \end{subfigure}
+	 \begin{subfigure}[b]{0.16\textwidth}
+        \includegraphics[width=\textwidth]{img2/src.png}
+        \caption{The original image}
+        \label{fig:img2_src}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.16\textwidth}
+        \includegraphics[width=\textwidth]{img2/hist.png}
+        \caption{Histogram of the original image}
+        \label{fig:img2_hist}
+    \end{subfigure}	
+\begin{subfigure}[b]{0.16\textwidth}
+        \includegraphics[width=\textwidth]{img2/src.png}
+        \caption{The original image}
+        \label{fig:img2_src}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.16\textwidth}
+        \includegraphics[width=\textwidth]{img2/hist.png}
+        \caption{Histogram of the original image}
+        \label{fig:img2_hist}
+    \end{subfigure}	
+    
+    
+      \begin{subfigure}[b]{0.16\textwidth}
+        \includegraphics[width=\textwidth]{img2/src.png}
+        \caption{The original image}
+        \label{fig:img2_src}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.16\textwidth}
+        \includegraphics[width=\textwidth]{img2/hist.png}
+        \caption{Histogram of the original image}
+        \label{fig:img2_hist}
+    \end{subfigure}
+	 \begin{subfigure}[b]{0.16\textwidth}
+        \includegraphics[width=\textwidth]{img2/src.png}
+        \caption{The original image}
+        \label{fig:img2_src}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.16\textwidth}
+        \includegraphics[width=\textwidth]{img2/hist.png}
+        \caption{Histogram of the original image}
+        \label{fig:img2_hist}
+    \end{subfigure}	
+\begin{subfigure}[b]{0.16\textwidth}
+        \includegraphics[width=\textwidth]{img2/src.png}
+        \caption{The original image}
+        \label{fig:img2_src}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.16\textwidth}
+        \includegraphics[width=\textwidth]{img2/hist.png}
+        \caption{Histogram of the original image}
+        \label{fig:img2_hist}
+    \end{subfigure}
+    
+    
+      \begin{subfigure}[b]{0.16\textwidth}
+        \includegraphics[width=\textwidth]{img2/src.png}
+        \caption{The original image}
+        \label{fig:img2_src}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.16\textwidth}
+        \includegraphics[width=\textwidth]{img2/hist.png}
+        \caption{Histogram of the original image}
+        \label{fig:img2_hist}
+    \end{subfigure}
+	 \begin{subfigure}[b]{0.16\textwidth}
+        \includegraphics[width=\textwidth]{img2/src.png}
+        \caption{The original image}
+        \label{fig:img2_src}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.16\textwidth}
+        \includegraphics[width=\textwidth]{img2/hist.png}
+        \caption{Histogram of the original image}
+        \label{fig:img2_hist}
+    \end{subfigure}	
+\begin{subfigure}[b]{0.16\textwidth}
+        \includegraphics[width=\textwidth]{img2/src.png}
+        \caption{The original image}
+        \label{fig:img2_src}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.16\textwidth}
+        \includegraphics[width=\textwidth]{img2/hist.png}
+        \caption{Histogram of the original image}
+        \label{fig:img2_hist}
+    \end{subfigure}
+\end{figure}
+
+
+From the figure (comming) it can be seen that mostly weakens the effect of the frequency components, an interesting fact which also can be seen from the plot, is that as the order of the filter increases,  so increases the appearance of ringing noise. This is due to  filter becoming more ideal thus having the transition occur more abrupt as shown in \ref{fig:filter_become_ideal}  . 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.3\textwidth]{img4/filter_become_ideal2.png}
+	\caption{Filter becomes more ideal as the order increases.}
+    \label{fig:filter_become_ideal}
+\end{figure}
+
+
+
+
+
 
