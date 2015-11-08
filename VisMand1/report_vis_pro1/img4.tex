@@ -15,3 +15,23 @@ Figure \ref{fig:img42_src} shows  Image4\_2 which has to be restored. This image
     \caption{Analysis of image 1}\label{fig:img1}
 \end{figure}
 
+The frequency components creating the circle are reason why the the stripes are occuring in the image.  One way of resolving this issue is to create a low pass filter, which let everything below a certain frequency pass, and the filter frequencies above away. \\
+
+One type of lowpass filter is the butterworth lowpass filter which is defined as
+\begin{equation}
+	H(u,v) = \frac{1}{1+[\frac{D(u,v)}{D_0}]^{2n}}
+	\label{eq:LBP}
+	\cite{Bogen side 295}
+\end{equation}
+\todo{Cite til bogen side 295}
+$D_0$ is the cutoff frequency given as the distance from the origin, n  is the order,  and D(u,v) is distance between a point (u,v) in the frequency domain and the center frequency rectangle, it is calculated as such. 
+
+\begin{equation}
+D(u,v) = [(u-P/2)^2 + (v-Q/2)^2]^{\frac{1}{2}} 
+\end{equation}
+
+P and Q is the padded size of the rectangle. \\
+
+
+The cutoff frequency can easily by found, by computing the distance between the origin and the corresponding frequency component. 
+
