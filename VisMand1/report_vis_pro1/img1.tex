@@ -111,10 +111,14 @@ The filter is suited for removing salt and pepper noises. The filter reduce the 
 
 By visual inspection it can be seen that the Contraharmonic mean filter has removed most of the black pepper noise which was visible in Figure \ref{fig:img1_src}. As the kernel and order size increases it can be seen that output image becomes more blurred and more of the pepper noise  get removed, but also introduces more  salt noise.  Therefore was order sizes above one deemed unuseful .   The only filter which was capable of removing most of the pepper noise, and still keep the image minimally blurred is the output from the filter with an kernelsize of 5, and order 1 Figure \ref{fig:img1_contra5_1}. Which was used for further processing. \\
 
-The image is still a bit dark compared to the original image, to reduce its poor contrast was a method called contrast stretching implemented and applied to that image.  This method tries to expand the range of intensity levels the image contains, such that the full intensity range of the image will be used. 
+The image is still a bit dark compared to the original image, to reduce its poor contrast was a method called contrast stretching implemented and applied to that image.  This method tries to expand the range of intensity levels the image contains, such that the full intensity range of the image will be used. \\
 \todo{ciite http://www.tutorialspoint.com/dip/Histogram\_Stretching.htm}\\
 
-This is done by modifying each pixel in the image using Equation \ref{eq:contrast_eq}
+Compared to histogram equalization is this method more subtle, and tries to keep the original histogram shape, where an equalization  will try to equalize all bins in a histogram, and thus radically distort the image, and change the histogram from its original appereance.\\
+
+
+
+The Contrast stretching is  done by modifying each pixel in the image using Equation \ref{eq:contrast_eq}
 
 \begin{equation}
 \hat{f}(x,y) = \frac{g(x,y) - minP}{maxP - minP} \cdot 2^{bpp }-1
@@ -128,7 +132,7 @@ The result of using this method can be seen here.
 \begin{figure}[H]
 \centering
  \includegraphics[width=0.30\textwidth]{img1/img_1_gaus_5_1_constrast_strech.png}
-        \caption{Kernelsize: 11 order: 1}
+        \caption{Contrast streched image}
          \label{fig:img1_contra11_1}
 \end{figure}
 

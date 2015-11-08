@@ -1,131 +1,75 @@
-Figure \ref{fig:img2_src} shows the original image, which is filled with black and white pixels. This kind of noise is known as salt--and--pepper noise, and from the image's histogram (figure \ref{fig:img2_hist}) can the amount of salt--and--pepper noise be seen; salt noise on the right and pepper noise on the left. 
+Figure \ref{fig:img2_src} shows the original image, which is filled with black and white pixels. This kind of noise is known as salt--and--pepper noise, and from the histogram of the image (figure \ref{fig:img2_hist}) can the amount of salt--and--pepper noise be seen; salt noise on the right and pepper noise on the left. 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.25\textwidth}
+    \begin{subfigure}[b]{0.23\textwidth}
         \includegraphics[width=\textwidth]{img2/src.png}
         \caption{The original image}
         \label{fig:img2_src}
     \end{subfigure}
-    \begin{subfigure}[b]{0.485\textwidth}
-        \includegraphics[width=\textwidth]{img2/hist_org_img2.png}
+    \begin{subfigure}[b]{0.446\textwidth}
+        \includegraphics[width=\textwidth]{img2/hist.png}
         \caption{Histogram of the original image}
         \label{fig:img2_hist}
     \end{subfigure}
     \caption{Analysis of image 2}\label{fig:img2}
 \end{figure}
 
-In order to better see the effect of the salt--and--pepper noise, a uniform surface (figure \ref{fig:rect_org_img2}) is analysed, in this case the red square marked on figure \ref{fig:src_square}. The histogram of the uniform surface is shown on figure \ref{fig:hist_rect_org_img2}, and here is the salt--and--pepper noise also clear to see. 
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.22\textwidth}
-        \includegraphics[width=\textwidth]{img2/src_square.png}
-        \caption{The original image}
-        \label{fig:src_square}
-    \end{subfigure}
-        \begin{subfigure}[b]{0.335\textwidth}
-        \includegraphics[width=\textwidth]{img2/rect_org_img2.png}
-        \caption{The uniform surface}
-        \label{fig:rect_org_img2}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.43\textwidth}
-        \includegraphics[width=\textwidth]{img2/hist_rect_org_img2.png}
-        \caption{Histogram of the uniform surface}
-        \label{fig:hist_rect_org_img2}
-    \end{subfigure}
-    \caption{Analysis of an uniform surface of image 2}\label{fig:img2_rect}
-\end{figure}
-
-Approximately are there three times more salt noise compared to the pepper noise. The values in the middle of the histogram is what is left of the original image, and in order to restore as much as possible, and median filter is applied on the image. The median filter is chosen because it is very effective against salt-and-pepper noise in the images, and the OpenCV function
+Approximately  there are three times more salt noise compared to the pepper noise. The values in the middle of the histogram is what is left of the original image, and in order to restore as much as possible, and median filter is applied on the image. \todo{How do we know.. det kunne også være en form for noise, vi ved kun med sikkerhed at pepper of salt er tydeligt. hvilket kan ses og bekræftes via hist. }The median filter is chosen because it is very effective against salt-and-pepper noise in the images, and the OpenCV function
 \begin{center}
 \lstinline|void medianBlur(InputArray src, OutputArray dst, int ksize)|\footnote{\url{http://docs.opencv.org/2.4/modules/imgproc/doc/filtering.html\#void medianBlur(InputArray src, OutputArray dst, int ksize)}}
 \end{center}
-is used for applying the filter to the image. Basically the image blurred by using the median filter, and depending on the size of \lstinline|ksize|, the more blurred will the image become.\\[0.2cm]
-The \lstinline|ksize| is the size of the kernel filter applied to each pixel in the image, and therefore must the value of \lstinline|ksize| be odd and greater than 1, so in order to test if the noise is removed, a kernel of \lstinline|3| is applied on the image 2 and checked if all the noise is removed. If not all the noise is removed, the kernel size is increased with two, and checked again, and so on. In order to better see the reduction of the noise by using the the \lstinline|medianBlur|, the same method used in figure \ref{fig:img2_rect} are applied after using each kernel filter, becuase it is easier to see the reduction of the noise on the uniform surface. From the uniform surfaces histograms can it be seen that the more compact the peak get, the lesser noise are there in the picture and the more uniform gets the color of the surface.\\[0.2cm]
-Figure \ref{fig:img2_kernel3}, \ref{fig:img2_kernel5}, \ref{fig:img2_kernel7} and \ref{fig:img2_kernel9} shows the process of finding the right \lstinline|ksize|, but all four kernel sizes still does not remove all the noise, especially the salt noise. All the salt--and--pepper noise is removed with a \lstinline|ksize=11|, but the disadvantage of this approach is that the details in the image are reduced. For restoring as much as possible of the these details, a histogram equalization is applied on the noise reduced image. Histogram equalization restores the details by improves the contrast in the image by stretching out the intensity range of the image. On the left and right side of image \ref{fig:img2_kernel11}'s histogram are there underpopulated intensities, which is why an histogram equalization is an optimal choice. The result is shown on figure \ref{fig:img2_histEq}.
+is used for applying this filter to the image. The median filter help blurring the image, and depending on the size of \lstinline|ksize|, the more blurred will the image become.\\[0.2cm]
+The \lstinline|ksize| is the size of the kernel filter applied to each pixel in the image, and therefore must the value of \lstinline|ksize| be odd and greater than 1, so in order to test if the noise is removed, a kernel of \lstinline|3| is applied on the image 2 and checked if all the noise is removed. If not all the noise is removed, the kernel size is increased with two, and checked again, and so on.  
 
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{img2/median3.png}\\[0.1cm]
-        \includegraphics[width=\textwidth]{img2/hist_3_median_3_final_img2.png}
-        \begin{center}
-        	\textbf{Uniform surfaces}
-        \end{center}
-        \includegraphics[width=\textwidth]{img2/rect_3_median_3_final_img2.png}\\[0.1cm]
-        \includegraphics[width=\textwidth]{img2/hist_rect_3_median_3_final_img2.png}
+        \includegraphics[width=\textwidth]{img2/kernel3.png}
         \caption{\lstinline|ksize = 3|}
         \label{fig:img2_kernel3}
     \end{subfigure}
     \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{img2/median5.png}\\[0.1cm]
-        \includegraphics[width=\textwidth]{img2/hist_5_median_5_final_img2.png}
-        \begin{center}
-        	\text{ }
-        \end{center}
-        \includegraphics[width=\textwidth]{img2/rect_5_median_5_final_img2.png}\\[0.1cm]
-        \includegraphics[width=\textwidth]{img2/hist_rect_5_median_5_final_img2.png}
+        \includegraphics[width=\textwidth]{img2/kernel5.png}
         \caption{\lstinline|ksize = 5|}
         \label{fig:img2_kernel5}
     \end{subfigure}
     \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{img2/median7.png}\\[0.1cm]
-        \includegraphics[width=\textwidth]{img2/hist_7_median_7_final_img2.png}
-        \begin{center}
-        	\text{ }
-        \end{center}
-        \includegraphics[width=\textwidth]{img2/rect_7_median_7_final_img2.png}\\[0.1cm]
-        \includegraphics[width=\textwidth]{img2/hist_rect_7_median_7_final_img2.png}
+        \includegraphics[width=\textwidth]{img2/kernel7.png}
         \caption{\lstinline|ksize = 7|}
         \label{fig:img2_kernel7}
     \end{subfigure}
     \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{img2/median9.png}\\[0.1cm]
-        \includegraphics[width=\textwidth]{img2/hist_9_median_9_final_img2.png}
-        \begin{center}
-        	\text{ }
-        \end{center}
-        \includegraphics[width=\textwidth]{img2/rect_9_median_9_final_img2.png}\\[0.1cm]
-        \includegraphics[width=\textwidth]{img2/hist_rect_9_median_9_final_img2.png}
+        \includegraphics[width=\textwidth]{img2/kernel9.png}
         \caption{\lstinline|ksize = 9|}
         \label{fig:img2_kernel9}
     \end{subfigure}
     \caption{Analysis of image 2}\label{fig:img2}
 \end{figure}
-
+Figure \ref{fig:img2_kernel3}, \ref{fig:img2_kernel5}, \ref{fig:img2_kernel7} and \ref{fig:img2_kernel9} shows the process of finding the right \lstinline|ksize|, but all four kernel sizes still does not remove all the noise, especially the salt noise. All the salt--and--pepper noise is removed with a \lstinline|ksize=11|, but the disadvantage of this approach is that the details in the image are reduced. For restoring as much as possible of the these details, a histogram equalization is applied on the noise reduced image. Histogram equalization restores the details by improves the contrast in the image by stretching out the intensity range of the image. On the left and right side of image \ref{fig:img2_kernel11}'s histogram are there underpopulated intensities, which is why an histogram equalization is an optimal choice. The result is shown on figure \ref{fig:img2_histEq}.
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.28\textwidth}
+    \begin{subfigure}[b]{0.3\textwidth}
         \includegraphics[width=\textwidth]{img2/median.png}\\[0.1cm]
-        \includegraphics[width=\textwidth]{img2/hist_11_median_11_final_img2.png}
-        \begin{center}
-        	\textbf{Uniform surfaces}
-        \end{center}
-        \includegraphics[width=\textwidth]{img2/rect_11_median_11_final_img2.png}\\[0.1cm]
-        \includegraphics[width=\textwidth]{img2/hist_rect_11_median_11_final_img2.png}
+        \includegraphics[width=\textwidth]{img2/histn.png}
         \caption{\lstinline|ksize = 11|}
         \label{fig:img2_kernel11}
     \end{subfigure}
-    \begin{subfigure}[b]{0.28\textwidth}
+    \begin{subfigure}[b]{0.3\textwidth}
         \includegraphics[width=\textwidth]{org.png}\\[0.1cm]
-        \includegraphics[width=\textwidth]{img2/hist_eee_org_res_total.png}
-        \begin{center}
-        	\text{ }
-        \end{center}
-        \includegraphics[width=\textwidth]{img2/rect_eee_org_res_total.png}\\[0.1cm]
-        \includegraphics[width=\textwidth]{img2/hist_rect_eee_org_res_total.png}
-        \caption{Original}
+        \includegraphics[width=\textwidth]{histOrg.png}
+        \caption{Equalized}
         \label{fig:img2_org}
     \end{subfigure}
-    \begin{subfigure}[b]{0.28\textwidth}
+    \begin{subfigure}[b]{0.3\textwidth}
         \includegraphics[width=\textwidth]{img2/eqlMedian.png}\\[0.1cm]
-        \includegraphics[width=\textwidth]{img2/hist_eee_eql_res_total.png}
-        \begin{center}
-        	\text{ }
-        \end{center}
-        \includegraphics[width=\textwidth]{img2/rect_eee_eql_res_total.png}\\[0.1cm]
-        \includegraphics[width=\textwidth]{img2/hist_rect_eee_eql_res_total.png}
+        \includegraphics[width=\textwidth]{img2/histE.png}
         \caption{Equalized}
         \label{fig:img2_histEq}
     \end{subfigure}
     \caption{Analysis of image 2}\label{fig:img2}
 \end{figure}
+\todo[inline]{Which one is best? -- conclusion needed.. Try contrast streching.. fremfor equalization}
