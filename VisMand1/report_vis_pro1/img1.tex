@@ -8,21 +8,20 @@ Figure \ref{fig:img1_src} shows the first image which has to be restored. This i
         \label{fig:img1_src}
     \end{subfigure}
     \begin{subfigure}[b]{0.446\textwidth}
-        \includegraphics[width=\textwidth]{img1/src_hist.png}
+        \includegraphics[width=\textwidth]{img1/src_hist1.png}
         \caption{Histogram of Image1}
         \label{fig:img1_hist}
     \end{subfigure}
     \caption{Analysis of image 1}\label{fig:img1}
 \end{figure}
 
-An effective way of removing salt and pepper noise it to use an median filter, which would take the median value  of fixed numbered  values and assign it to that pixel position, but as the amount of pepper noise is too large, would an median value mostly lead to a black pixel, hence not provide that much of an improvement as seen in Figure \ref{fig:img_median_full}.  
+An effective way of removing salt and pepper noise it to use an median filter, which would take the median value  of fixed numbered  values and assign it to that pixel position, but as the amount of pepper noise is too large, will an median value mostly lead to a black pixel, thus not provide that much of an improvement as seen in Figure \ref{fig:img_median_full}.  
 
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.27\textwidth}
         \includegraphics[width=\textwidth]{img1/Image1.png}
         \caption{Image1 with \\no restoration}
-        \label{fig:img1_src}
     \end{subfigure}
     \begin{subfigure}[b]{0.27\textwidth}
         \includegraphics[width=\textwidth]{img1/img_1_medianBlur_3.png}
@@ -37,5 +36,80 @@ An effective way of removing salt and pepper noise it to use an median filter, w
     \caption{Median filter applied to image1}\label{fig:img_median_full}
 \end{figure}
 
+As the Median filter did not show  any form of improvement, was it  deemed not unusable for this use case, were an contraharmonic mean filter implemented and tried.  
 
-\end{document}
+An contraharmonic mean filter restores an images using this expression
+\begin{equation}
+\hat{f}(u,v) = \frac{\sum\limits_{(s,t) \in S_{xy}}g(s,t)^{Q+1}}{\sum\limits_{(s,t) \in S_{xy}}g(s,t)^{Q}}
+\cite{Image processing Bogen p. 345}
+\label{eq:Contra}
+\end{equation}
+\todo{citation has to be added to the book p. 345}
+
+In Equation \ref{eq:Contra}, is $S_{xy}$ the rectangular window which has a center pixel. $g$ is the corrupted images, and $\hat{f}$ is the restored image. $Q$ defines the order of the filter.  \\
+The filter suited for removing salt and pepper noises. The filter reduce the effet of pepper noise for positive Q values, and Salt noise for negative Q values.  Besides this can this filter also be reduced to an arithmetic filter by setting $Q = 0$ or harmonic filter by setting $Q = -1$. The filter was implemented due to its multiple applicability, and applied on Figure \ref{fig:img1_src} with different positive value which the result can bee seen on Figure \ref{fig:img1_contra}, to test how well it well it could restore the image to its original condition.  
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{img1/img_1_gaus_5_1.png}
+        \caption{Kernelsize: 5 order: 1}
+          \label{fig:img1_contra5_1}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{img1/img_1_gaus_5_5.png}
+        \caption{Kernelsize: 5 order: 5}
+          \label{fig:img1_contra5_5}
+    \end{subfigure}
+       \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{img1/img_1_gaus_5_9.png}
+        \caption{Kernelsize: 5 order: 9}
+          \label{fig:img1_contra5_9}
+    \end{subfigure}
+    
+    
+    
+    
+       \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{img1/img_1_gaus_9_1.png}
+        \caption{Kernelsize: 9 order: 1}
+         \label{fig:img1_contra9_1}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{img1/img_1_gaus_9_5.png}
+        \caption{Kernelsize: 9 order: 5}
+         \label{fig:img1_contra9_5}
+    \end{subfigure}
+       \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{img1/img_1_gaus_9_9.png}
+        \caption{Kernelsize: 9 order: 9}
+         \label{fig:img1_contra9_9}
+    \end{subfigure}
+    
+    
+    
+    
+    
+       \begin{subfigure}[b]{0.30\textwidth}
+        \includegraphics[width=\textwidth]{img1/img_1_gaus_11_1.png}
+        \caption{Kernelsize: 11 order: 1}
+         \label{fig:img1_contra11_1}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.30\textwidth}
+        \includegraphics[width=\textwidth]{img1/img_1_gaus_11_5.png}
+        \caption{Kernelsize: 11 order: 5}
+         \label{fig:img1_contra11_5}
+    \end{subfigure}
+       \begin{subfigure}[b]{0.30\textwidth}
+        \includegraphics[width=\textwidth]{img1/img_1_gaus_11_9.png}
+        \caption{Kernelsize: 11 order: 9}
+		 \label{fig:img1_contra11_9}
+    \end{subfigure}
+    \caption{Contraharmonic mean filter applied on Figure \ref{fig:img1_src} with different kernel sizes and orders}
+    \label{fig:img1_contra}
+\end{figure}
+
+By visual inspection it can be seen that the contraharmonic mean filter has removed most of the black pepper noise which was visible in Figure \ref{fig:img1_src}. As the kernel and order size increases it can be seen that output image becomes more blurred and more of the pepper noise  get removed but also introduces a salt noise as the order increases, for which order sizes above 1 was deemed not usable for the  restoration process.   The only filter which was capable of removing most of the pepper noise, and still keep the image minimally blurred is the output the filter with an kernelsize of 5, and order 1 Figure \ref{fig:img1_contra5_1}. Which was used for further processing. \\
+
+To
+
