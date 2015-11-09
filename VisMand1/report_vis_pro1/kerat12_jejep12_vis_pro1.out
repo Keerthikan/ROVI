@@ -1,5 +1,7 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.2}{Image 1}{}% 2
+\BOOKMARK [1][-]{section.2}{Image 1 \205 Pepper noise}{}% 2
 \BOOKMARK [1][-]{section.3}{Image 2 \205 Salt and Pepper noise}{}% 3
-\BOOKMARK [1][-]{section.4}{Image 3}{}% 4
-\BOOKMARK [1][-]{section.5}{Image 4}{}% 5
+\BOOKMARK [2][-]{subsection.3.1}{Adaptive Median Filter \(AMF\)}{section.3}% 4
+\BOOKMARK [1][-]{section.4}{Image 3 \205 Uniform noise}{}% 5
+\BOOKMARK [1][-]{section.5}{Image 4 \205 Frequency component}{}% 6
+\BOOKMARK [1][-]{section.6}{Conclusion}{}% 7

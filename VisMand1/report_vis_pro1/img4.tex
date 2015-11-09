@@ -2,12 +2,12 @@ Figure \ref{fig:img42_src} shows  Image4\_2 which has to be restored. This image
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.23\textwidth}
+    \begin{subfigure}[b]{0.3\textwidth}
         \includegraphics[width=\textwidth]{img4/Image4_2.png}
         \caption{Image4\_2 with \\no restoration}
         \label{fig:img42_src}
     \end{subfigure}
-    \begin{subfigure}[b]{0.23\textwidth}
+    \begin{subfigure}[b]{0.291\textwidth}
         \includegraphics[width=\textwidth]{img4/Image4_2_freq_spec.png}
         \caption{Frequency spectrum of Image4\_2}
         \label{fig:img1_hist}
@@ -21,10 +21,9 @@ One type of lowpass filter is the butterworth lowpass filter which is defined as
 \begin{equation}
 	H(u,v) = \frac{1}{1+[\frac{D(u,v)}{D_0}]^{2n}}
 	\label{eq:LBP}
-	\cite{Bogen side 295}
+	\cite{dip}
 \end{equation}
-\todo{Cite til bogen side 295}
-$D_0$ is the cutoff frequency given as the distance from the origin, n  is the order,  and D(u,v) is distance between a point (u,v) in the frequency domain and the center frequency rectangle, and  calculated as such. 
+$D_0$ is the cutoff frequency given as the distance from the origin, n  is the order,  and D(u,v) is distance between a point (u,v) in the frequency domain and the center frequency rectangle, and  calculated as such.
 
 \begin{equation}
 D(u,v) = [(u-P/2)^2 + (v-Q/2)^2]^{\frac{1}{2}} 
@@ -45,7 +44,7 @@ This distance is computed to be 800, which means that $D_0$ values below 800, sh
         \caption{d0: 100 n: 1}
         \label{fig:img4_1001_im}
     \end{subfigure}
-    \begin{subfigure}[b]{0.16\textwidth}
+    \begin{subfigure}[b]{0.1555\textwidth}
         \includegraphics[width=\textwidth]{img4/freq_spec_out_100_1.png}
         \caption{d0: 100 n: 1}
         \label{fig:img4_1001_fr}
@@ -55,7 +54,7 @@ This distance is computed to be 800, which means that $D_0$ values below 800, sh
         \caption{d0: 100 n: 9}
         \label{fig:img4_1009_im}
     \end{subfigure}
-    \begin{subfigure}[b]{0.16\textwidth}
+    \begin{subfigure}[b]{0.1555\textwidth}
         \includegraphics[width=\textwidth]{img4/freq_spec_out_100_9.png}
         \caption{d0: 100 n: 9}
         \label{fig:img4_1009_fr}
@@ -65,7 +64,7 @@ This distance is computed to be 800, which means that $D_0$ values below 800, sh
         \caption{d0: 100 n: 14}
         \label{fig:img4_10014_im}
     \end{subfigure}
-    \begin{subfigure}[b]{0.16\textwidth}
+    \begin{subfigure}[b]{0.1555\textwidth}
         \includegraphics[width=\textwidth]{img4/freq_spec_out_100_14.png}
         \caption{d0: 100 n: 14}
         \label{fig:img4_10014_fr}
@@ -77,7 +76,7 @@ This distance is computed to be 800, which means that $D_0$ values below 800, sh
         \caption{d0: 300 n: 1}
         \label{fig:img4_3001_im}
     \end{subfigure}
-    \begin{subfigure}[b]{0.16\textwidth}
+    \begin{subfigure}[b]{0.1555\textwidth}
         \includegraphics[width=\textwidth]{img4/freq_spec_out_300_1.png}
         \caption{d0: 300 n: 1}
         \label{fig:img4_3001_fr}
@@ -87,7 +86,7 @@ This distance is computed to be 800, which means that $D_0$ values below 800, sh
         \caption{d0: 300 n: 9}
         \label{fig:img4_3009_im}
     \end{subfigure}
-    \begin{subfigure}[b]{0.16\textwidth}
+    \begin{subfigure}[b]{0.1555\textwidth}
         \includegraphics[width=\textwidth]{img4/freq_spec_out_300_9.png}
         \caption{d0: 300 n: 9}
         \label{fig:img4_3009_fr}
@@ -97,7 +96,7 @@ This distance is computed to be 800, which means that $D_0$ values below 800, sh
         \caption{d0: 300 n: 14}
         \label{fig:img4_30014_im}
     \end{subfigure}
-    \begin{subfigure}[b]{0.16\textwidth}
+    \begin{subfigure}[b]{0.1555\textwidth}
         \includegraphics[width=\textwidth]{img4/freq_spec_out_300_14.png}
         \caption{d0: 300 n: 14}
         \label{fig:img4_30014_fr}
@@ -109,7 +108,7 @@ This distance is computed to be 800, which means that $D_0$ values below 800, sh
         \caption{d0: 500 n: 1}
         \label{fig:img4_5001_im}
     \end{subfigure}
-    \begin{subfigure}[b]{0.16\textwidth}
+    \begin{subfigure}[b]{0.1555\textwidth}
         \includegraphics[width=\textwidth]{img4/freq_spec_out_500_1.png}
         \caption{d0: 500 n: 1}
         \label{fig:img4_5001_fr}
@@ -119,7 +118,7 @@ This distance is computed to be 800, which means that $D_0$ values below 800, sh
         \caption{d0: 500 n: 9}
         \label{fig:img4_5009_im}
     \end{subfigure}
-    \begin{subfigure}[b]{0.16\textwidth}
+    \begin{subfigure}[b]{0.1555\textwidth}
         \includegraphics[width=\textwidth]{img4/freq_spec_out_500_9.png}
         \caption{d0: 500 n: 9}
         \label{fig:img4_5009_fr}
@@ -129,7 +128,7 @@ This distance is computed to be 800, which means that $D_0$ values below 800, sh
         \caption{d0: 500 n: 14}
         \label{fig:img4_50014_im}
     \end{subfigure}
-    \begin{subfigure}[b]{0.16\textwidth}
+    \begin{subfigure}[b]{0.1555\textwidth}
         \includegraphics[width=\textwidth]{img4/freq_spec_out_500_14.png}
         \caption{d0: 500 n: 14}
         \label{fig:img4_50014_fr}
@@ -137,7 +136,6 @@ This distance is computed to be 800, which means that $D_0$ values below 800, sh
  	\caption{Image4\_2 filtered with lowpass with different d0 and n values}
  	\label{fig:lowpass_all}
 \end{figure}
-\todo{Can not add caption for the full}
 
 From Figure \ref{fig:lowpass_all} it can be seen that the filters weakens the effect of the frequency components. Some ringing effect occurs as the image gets filtered with higher order filter. This is due to the transition occuring more abruptly thus resembling an ideal filter. 
 
@@ -151,7 +149,7 @@ From Figure \ref{fig:lowpass_all} it can be seen that the filters weakens the ef
 
 The image which was used for further processing is the output generated by applying a low pass buterworth filter with an $d_0 = 500$ and order of 14, as it seems to have minimum ringing effect and removed the unwanted effects. \\
  
- By resembling the output from the filter with original it can be seen that the contrast differs a bit compared with the original,  hence was the contrast stretching be applied on to this image, which returns this image. 
+By resembling the output from the filter with original it can be seen that the contrast differs a bit compared with the original,  hence was the contrast stretching be applied on to this image, which returns this image.\cite{dip}
  
  \begin{figure}[H]
  \centering
@@ -159,31 +157,29 @@ The image which was used for further processing is the output generated by apply
  	\caption{Contrast strecthing applied to the image. }
     \label{fig:filter_become_ideal}
 \end{figure} 
-\todo{bogen side 296}
-At this point it was determined that the image was restored enough, to resemble the original image. 
+At this point it was determined that the image was restored enough, to resemble the original image.
 
 \begin{figure}[H]
 \centering
     \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{img4/Image4_2.png}
         \caption{Start image}
-        \label{fig:img2_hist}
+        \label{fig:img4_hist}
     \end{subfigure}
 	 \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{img4/Image4_2.png}
         \caption{Lowpass filtered}
-        \label{fig:img2_src}
+        \label{fig:img4_src}
     \end{subfigure}
     \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{img4/filteredOutput_50014_contrast_strech.png}
         \caption{Contrast stretched}
-        \label{fig:img2_hist}
+        \label{fig:img4_hist}
     \end{subfigure}	
 \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{org.png}
         \caption{The original image}
-        \label{fig:img2_src}
+        \label{fig:img4_src}
     \end{subfigure}
 \end{figure}
-
 

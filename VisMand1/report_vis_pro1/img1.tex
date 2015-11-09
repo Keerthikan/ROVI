@@ -4,12 +4,12 @@ Figure \ref{fig:img1_src} shows the first image which has to be restored. This i
     \centering
     \begin{subfigure}[b]{0.23\textwidth}
         \includegraphics[width=\textwidth]{img1/Image1.png}
-        \caption{Image1 with \\no restoration}
+        \caption{Image1 with no restoration}
         \label{fig:img1_src}
     \end{subfigure}
     \begin{subfigure}[b]{0.446\textwidth}
         \includegraphics[width=\textwidth]{img1/src_hist1.png}
-        \caption{Histogram of Image1}
+        \caption{Histogram of Image1 \\[0.45cm]}
         \label{fig:img1_hist}
     \end{subfigure}
     \caption{Analysis of image 1}\label{fig:img1}
@@ -41,12 +41,11 @@ As the Median filter did not show  any form of improvement, an other method had 
 An contraharmonic mean filter restores an images using this expression
 \begin{equation}
 \hat{f}(u,v) = \frac{\sum\limits_{(s,t) \in S_{xy}}g(s,t)^{Q+1}}{\sum\limits_{(s,t) \in S_{xy}}g(s,t)^{Q}}
-\cite{Image processing Bogen p. 345}
+\cite{dip1}
 \label{eq:Contra}
 \end{equation}
-\todo{citation has to be added to the book p. 345}
 
-In Equation \ref{eq:Contra}, is $S_{xy}$ a rectangular  window with a center pixel. $g$ is the corrupted images, and $\hat{f}$ is the restored image. $Q$ defines the order of the filter.  \\
+In Equation \ref{eq:Contra}, is $S_{xy}$ a rectangular  window with a center pixel. $g$ is the corrupted images, and $\hat{f}$ is the restored image. $Q$ defines the order of the filter.  \\[0.2cm]
 The filter is suited for removing salt and pepper noises. The filter reduce the effect of pepper noise for positive Q values, and Salt noise for negative Q values. it can also be reduced to an arithmetic filter by setting $Q = 0$ or harmonic filter by setting $Q = -1$. The filter was implemented due to its multiple applicability, and applied on Figure \ref{fig:img1_src} with different positive value which the result can bee seen on Figure \ref{fig:img1_contra}, to test how well it well it could restore the image to its original condition.  
 
 \begin{figure}[H]
@@ -111,8 +110,8 @@ The filter is suited for removing salt and pepper noises. The filter reduce the 
 
 By visual inspection it can be seen that the Contraharmonic mean filter has removed most of the black pepper noise which was visible in Figure \ref{fig:img1_src}. As the kernel and order size increases it can be seen that output image becomes more blurred and more of the pepper noise  get removed, but also introduces more  salt noise.  Therefore was order sizes above one deemed unuseful .   The only filter which was capable of removing most of the pepper noise, and still keep the image minimally blurred is the output from the filter with an kernelsize of 5, and order 1 Figure \ref{fig:img1_contra5_1}. Which was used for further processing. \\
 
-The image is still a bit dark compared to the original image, to reduce its poor contrast was a method called contrast stretching implemented and applied to that image.  This method tries to expand the range of intensity levels the image contains, such that the full intensity range of the image will be used. \\
-\todo{ciite http://www.tutorialspoint.com/dip/Histogram\_Stretching.htm}\\
+The image is still a bit dark compared to the original image, to reduce its poor contrast was a method called contrast stretching implemented and applied to that image.  This method tries to expand the range of intensity levels the image contains, such that the full intensity range of the image will be used.\footnote{\url{http://www.tutorialspoint.com/dip/Histogram\_Stretching.htm}} \\
+
 
 Compared to histogram equalization is this method more subtle, and tries to keep the original histogram shape, where an equalization  will try to equalize all bins in a histogram, and thus radically distort the image, and change the histogram from its original appereance.\\
 
@@ -141,7 +140,7 @@ At this point it was determined that image has been restored enough to resemble 
 \begin{figure}[H]
    \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{img1/Image1.png}
-        \caption{Image with noise}
+        \caption{Image with noise\\[0.42cm]}
          %\label{fig:img1_contra11_1}
     \end{subfigure}
     \begin{subfigure}[b]{0.24\textwidth}
@@ -156,7 +155,7 @@ At this point it was determined that image has been restored enough to resemble 
     \end{subfigure}
      \begin{subfigure}[b]{0.24\textwidth}
         \includegraphics[width=\textwidth]{org.png}
-        \caption{Original image}
+        \caption{Original image\\[0.42cm]}
 		 %\label{fig:img1_contra11_9}
     \end{subfigure}   
     \caption{Image restoration process}

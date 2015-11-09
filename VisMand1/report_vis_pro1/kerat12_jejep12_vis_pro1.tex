@@ -127,28 +127,64 @@ Dato: \today
 \end{center}
 \end{titlepage}
 
-\listoftodos
 \tableofcontents
 
 \newpage
 \section{Introduction}
 \input{intro.tex}
 
-\section{Image 1}
+\newpage
+\section{Image 1 -- Pepper noise}
 \input{img1.tex}
 
+\newpage
 \section{Image 2 -- Salt and Pepper noise}
 \input{img2.tex}
 
-\section{Image 3}
+\newpage
+\section{Image 3 -- Uniform noise}
 \input{img3.tex}
 
-\section{Image 4}
+\newpage
+\section{Image 4 -- Frequency component}
 \input{img4.tex}
 
+\section{Conclusion}
+During this report has different images been restored to their orignal condition. This has been done by analyzing them using different methods, and based on the observation applied different solutions to neutralize the noise. The result of using these solution can be seen on figure \ref{fig:con_fig}.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.23\textwidth}
+        \includegraphics[width=\textwidth]{img1/img_1_gaus_5_1_constrast_strech.png}
+        \caption{Image1}
+        \label{fig:result_img_1}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.23\textwidth}
+        \includegraphics[width=\textwidth]{img2/adaptive_5_test_final_img2.png}
+        \caption{Image2}
+        \label{fig:result_img_2}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.23\textwidth}
+        \includegraphics[width=\textwidth]{img3/contrast_5_0_85_final_img3.png}
+        \caption{Image3}
+        \label{fig:result_img_3}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.23\textwidth}
+        \includegraphics[width=\textwidth]{img4/filteredOutput_6509_contrast_strech.png}
+        \caption{Image4\_2}
+        \label{fig:result_img_4}
+    \end{subfigure}
+    \caption{Analysis of image 1}\label{fig:con_fig}
+\end{figure}
 
 
 
+\newpage
+\begin{thebibliography}{widest entry}
+\bibitem{dip1} Rafael C. Gonzalez and Richard C. Woods, “Digital Image Processing”, 3rd Edition, Pearson/Prentice Hall, page 345
+\bibitem{uni} Akram Hameed and Tholfiqar Naieem, “Image noise remover using spatial filters”, 2007-2008, page page 7-27
+\bibitem{dip} Rafael C. Gonzalez and Richard C. Woods, “Digital Image Processing”, 3rd Edition, Pearson/Prentice Hall, page 295-296
+\end{thebibliography}
 
 \end{document}
 

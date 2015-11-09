@@ -1,4 +1,4 @@
-Figure \ref{fig:img3} shows the original image with some kind of white noise in it, and by analysing the image histogram (image \ref{fig:img3_hist}) can two kind of noise fit this: Gaussian noise (figure \ref{fig:noise_gaussian}) and uniform noise (figure \ref{fig:noise_uniform}).
+Figure \ref{fig:img3} shows Image 3, which is the original image with some kind of white noise in it. By analysing the image histogram (image \ref{fig:img3_hist}) can two kind of noise fit this: Gaussian noise (figure \ref{fig:noise_gaussian}) and uniform noise (figure \ref{fig:noise_uniform}).
 
 \begin{figure}[H]
     \centering
@@ -15,23 +15,7 @@ Figure \ref{fig:img3} shows the original image with some kind of white noise in 
     \caption{Analysis of image 3}
     \label{fig:img3}
 \end{figure}
-In order to determine which kind of noise it is, an uniform surface of the image is analysed, as shown on figure \todo{Vi har vel tjekket alle  histogram for alle i uniforme overflader.. Det vel en selvfølge, så vi burde nok skrive det et sted..} \ref{fig:rect_org_img3}. By comparing the histogram of the uniform surface in figure \ref{fig:rect_org_img3} with the two noise examples histograms in figure \ref{fig:noise_examples_img3}, it can be determined that as the noise in image \ref{fig:img3_src} mostly resembles uniform noise,   it is also present in the image . 
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.22\textwidth}
-        \includegraphics[width=\textwidth]{img3/noise_g.png}
-        \caption{Gaussian noise}
-        \label{fig:noise_gaussian}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.2175\textwidth}
-        \includegraphics[width=\textwidth]{img3/noise_u.png}
-        \caption{Uniform noise}
-        \label{fig:noise_uniform}
-    \end{subfigure}
-    \caption{Examples of different noise models}
-    \label{fig:noise_examples_img3}
-\end{figure}
+In order to determine which kind of noise it is, an uniform surface of the image is analysed, as shown on figure \ref{fig:rect_org_img3}. By comparing the histogram of the uniform surface in figure \ref{fig:rect_org_img3} with the two noise examples histograms in figure \ref{fig:noise_examples_img3}, it can be determined that as the noise in image \ref{fig:img3_src} mostly resembles uniform noise, it is also present in the image. 
 
 \begin{figure}[H]
     \centering
@@ -79,7 +63,7 @@ In order to determine which kind of noise it is, an uniform surface of the image
     \label{fig:img3_kernel}
 \end{figure}
 
-In order to reduce the uniform noise in the image, a midpoint filter is applied to the image, as it is effective against Gaussian noise and uniform noise \todo{ref}. The method works be replacing the pixel with the average value (i.e. the midpoint) of the minimum pixel and maximum pixel within an kernel.  The kernel size must be odd and greater than 1, and the greater the kernel size is, the greater are the effects , but the image becomes more pixelated especially at the edges.  \\[0.2cm]
+In order to reduce the uniform noise in the image, a midpoint filter is applied to the image, as it is effective against Gaussian noise and uniform noise\cite{uni}. The method works be replacing the pixel with the average value (i.e. the midpoint) of the minimum pixel and maximum pixel within an kernel.  The kernel size must be odd and greater than 1, and the greater the kernel size is, the greater are the effects , but the image becomes more pixelated especially at the edges.  \\[0.2cm]
 Figure \ref{fig:img3_kernel_3}, \ref{fig:img3_kernel_5} and \ref{fig:img3_kernel_7} shows the result of three different kernel sizes; 3, 5 and 7. By comparing the same uniform surface of each of the images, can it be seen that a kernel 3 does not remove all the noise, but kernel 5 and 7 does. By comparing the sharpness of the edges with a kernel 5 and a kernel 7, the kernel 7's edges is too pixelated compared to the edges in kernel 5, and that is why in this project a midpoint filter with a kernel 5 is chosen to be applied in order to remove the uniform noise in image \ref{fig:img3_src}.\\[0.2cm]
 Figure \ref{fig:img3_kernel_5_final} shows the full image after applying the midpoint filter with a kernel size of 5, and compared to the original image (figure \ref{fig:img3_org_final}) it can be seen that there is a difference in the brightness. Figure \ref{fig:img3_kernel_5_final} is brighter than the original image, and therefore is the OpenCV function used
 \begin{center}
@@ -189,5 +173,3 @@ and the result of this is shown on figure \ref{fig:img3_contrast}. After this eq
     \caption{Examples of different noise models}
     \label{fig:noise_examples_img3}
 \end{figure} 
-
-\todo{lidt forvirret omkring konklussionen.. hvad er dit endelig svar?}
