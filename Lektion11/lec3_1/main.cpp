@@ -166,7 +166,7 @@ double **  transformation(double q[3], vector<double>& RPY)
             std::cout << "\n";
         }
     }
-    return result
+    return result;
 }
 int main()
 {
