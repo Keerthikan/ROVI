@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.5.1)  8 NOV 2015 22:38
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.5.1)  9 NOV 2015 00:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1982,10 +1982,16 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 153.
 (./kerat12_jejep12_vis_pro1.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 153.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 153.
-Package rerunfilecheck Info: File `kerat12_jejep12_vis_pro1.out' has not change
-d.
-(rerunfilecheck)             Checksum: F49E048E16EC2A47908B83069173181D;242.
 
+
+Package rerunfilecheck Warning: File `kerat12_jejep12_vis_pro1.out' has changed
+.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `kerat12_jejep12_vis_pro1.out':
+(rerunfilecheck)             Before: F49E048E16EC2A47908B83069173181D;242
+(rerunfilecheck)             After:  DD2229A7E015422971CB4FFDD339EAD0;287.
 
 LaTeX Warning: There were undefined references.
 
@@ -1995,9 +2001,9 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 153.
  ) 
 Here is how much of TeX's memory you used:
- 21204 strings out of 493315
- 401755 string characters out of 6137905
- 544851 words of memory out of 5000000
+ 21205 strings out of 493315
+ 401764 string characters out of 6137905
+ 544849 words of memory out of 5000000
  24067 multiletter control sequences out of 15000+600000
  14652 words of font info for 56 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
@@ -2019,10 +2025,10 @@ ve/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive
 e/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive
 /2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/
 2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on kerat12_jejep12_vis_pro1.pdf (18 pages, 177999902 bytes).
+Output written on kerat12_jejep12_vis_pro1.pdf (18 pages, 178000362 bytes).
 PDF statistics:
- 407 PDF objects out of 1000 (max. 8388607)
- 253 compressed objects within 3 object streams
- 60 named destinations out of 1000 (max. 500000)
+ 409 PDF objects out of 1000 (max. 8388607)
+ 255 compressed objects within 3 object streams
+ 61 named destinations out of 1000 (max. 500000)
  629 words of extra memory for PDF output out of 10000 (max. 10000000)
 

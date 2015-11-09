@@ -4,3 +4,4 @@
 \contentsline {section}{\numberline {3}Image 2 -- Salt and Pepper noise}{7}{section.3}
 \contentsline {section}{\numberline {4}Image 3}{9}{section.4}
 \contentsline {section}{\numberline {5}Image 4}{14}{section.5}
+\contentsline {section}{\numberline {6}Conclusion}{17}{section.6}
